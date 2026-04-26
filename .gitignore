@@ -33,6 +33,10 @@ coverage/
 .idea/
 .vscode/
 
+# Local AI/context docs not for remote
+CLAUDE.md
+README.md
+
 # Project-local helper/generated areas not needed for deployment
 data/
 Unbrauchbar/
