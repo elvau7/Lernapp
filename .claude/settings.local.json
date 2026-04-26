@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -n '90,731p' \"/c/Users/Lion Veit/OneDrive/Dokumente/Lion/Uni/Graz_VWL/6. Semester/app_6_semester/cards.js\")",
+      "Read(//tmp/**)",
+      "Bash(python3 -:*)",
+      "Bash(git -C \"C:\\\\Users\\\\Lion Veit\\\\OneDrive\\\\Dokumente\\\\Lion\\\\Uni\\\\Graz_VWL\\\\6. Semester\\\\app_6_semester\" log --oneline -5)",
+      "Bash(grep -n theory: /c/Users/Lion Veit/OneDrive/Dokumente/Lion/Uni/Graz_VWL/6. Semester/app_6_semester_neu/cards*.js)",
+      "Bash(node -e \"require\\(''''docx''''\\)\")",
+      "Bash(npm install:*)",
+      "Bash(node -e \"require\\(''docx''\\); console.log\\(''ok''\\)\")",
+      "Bash(npm root:*)",
+      "Bash(node make_guide.js)",
+      "Bash(python \"C:\\\\Users\\\\Lion Veit\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\669c7ad1-db35-4b27-9d49-557fbd148cce\\\\e3618f86-bcc2-474f-9032-d60bda450d01\\\\skills\\\\docx\\\\scripts\\\\office\\\\validate.py\" \"C:\\\\Users\\\\Lion Veit\\\\OneDrive\\\\Dokumente\\\\Lion\\\\Uni\\\\Graz_VWL\\\\6. Semester\\\\app_6_semester_neu\\\\Theory_Style_Guide.docx\")",
+      "Bash(python \"/c/Users/Lion Veit/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/669c7ad1-db35-4b27-9d49-557fbd148cce/e3618f86-bcc2-474f-9032-d60bda450d01/skills/docx/scripts/office/validate.py\" \"/c/Users/Lion Veit/OneDrive/Dokumente/Lion/Uni/Graz_VWL/6. Semester/app_6_semester_neu/Theory_Style_Guide.docx\")",
+      "Bash(cmd.exe /c \"python \"\"C:\\\\Users\\\\Lion Veit\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\669c7ad1-db35-4b27-9d49-557fbd148cce\\\\e3618f86-bcc2-474f-9032-d60bda450d01\\\\skills\\\\docx\\\\scripts\\\\office\\\\validate.py\"\" \"\"C:\\\\Users\\\\Lion Veit\\\\OneDrive\\\\Dokumente\\\\Lion\\\\Uni\\\\Graz_VWL\\\\6. Semester\\\\app_6_semester_neu\\\\Theory_Style_Guide.docx\"\"\")",
+      "Bash(cmd.exe /c python \"C:\\\\Users\\\\Lion Veit\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\669c7ad1-db35-4b27-9d49-557fbd148cce\\\\e3618f86-bcc2-474f-9032-d60bda450d01\\\\skills\\\\docx\\\\scripts\\\\office\\\\validate.py\" \"C:\\\\Users\\\\Lion Veit\\\\OneDrive\\\\Dokumente\\\\Lion\\\\Uni\\\\Graz_VWL\\\\6. Semester\\\\app_6_semester_neu\\\\Theory_Style_Guide.docx\")",
+      "Bash(python -c \":*)",
+      "Bash(pip install:*)",
+      "Bash(python -u -c \":*)",
+      "WebFetch(domain:api.anthropic.com)",
+      "Read(//c/Users/Lion Veit/.claude/projects/C--Users-Lion-Veit-OneDrive-Dokumente-Lion-Uni-Graz-VWL-6--Semester-app-6-semester-neu/148030b9-6c6a-4420-b57d-0adf57a6e016/tool-results//**)",
+      "Bash(gunzip -c \"webfetch-1776886456063-dteq6y.bin\")",
+      "Bash(cp \"/c/Users/Lion Veit/.claude/projects/C--Users-Lion-Veit-OneDrive-Dokumente-Lion-Uni-Graz-VWL-6--Semester-app-6-semester-neu/148030b9-6c6a-4420-b57d-0adf57a6e016/tool-results/webfetch-1776886456063-dteq6y.bin\" design.tar.gz)",
+      "Bash(tar -tzf design.tar.gz)",
+      "Bash(tar -xzf design.tar.gz)",
+      "Bash(powershell -Command \"Invoke-WebRequest -Uri 'https://unpkg.com/react@18.3.1/umd/react.production.min.js' -OutFile 'lib/react.production.min.js'\")",
+      "Bash(powershell -Command \"Invoke-WebRequest -Uri 'https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js' -OutFile 'lib/react-dom.production.min.js'\")",
+      "Bash(powershell -Command \"Invoke-WebRequest -Uri 'https://unpkg.com/@babel/standalone@7.29.0/babel.min.js' -OutFile 'lib/babel.min.js'\")",
+      "Bash(dir \"C:/Users/Lion Veit/OneDrive/Dokumente/Lion/Uni/Graz_VWL/6. Semester/app_6_semester_neu/lib/\")",
+      "Bash(npx --yes @babel/core --version)",
+      "Bash(node -e ' *)"
+    ]
+  }
+}

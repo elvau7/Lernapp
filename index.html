@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Lernapp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=Playfair+Display:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="lib/katex.min.css">
+</head>
+<body>
+<!-- ── LOGIN SCREEN ── -->
+<div id="screen-login">
+  <div class="login-card">
+    <div class="login-logo">
+      <h1>Lernapp</h1>
+      <p>Bitte melde dich an, um fortzufahren</p>
+    </div>
+    <div class="login-field">
+      <label for="login-username">Benutzername</label>
+      <input type="text" id="login-username" placeholder="Benutzername eingeben" autocomplete="username">
+    </div>
+    <div class="login-field">
+      <label for="login-password">Passwort</label>
+      <div class="login-pw-wrap">
+        <input type="password" id="login-password" placeholder="Passwort eingeben" autocomplete="current-password">
+        <button class="login-eye" id="login-eye" tabindex="-1" aria-label="Passwort anzeigen">👁</button>
+      </div>
+    </div>
+    <div class="login-error-msg" id="login-errmsg"></div>
+    <button class="login-btn" id="login-btn">Einloggen</button>
+  </div>
+</div>
+
+<!-- ── REACT ROOT ── -->
+<div id="react-root"></div>
+
+<!-- KaTeX -->
+<script src="lib/katex.min.js"></script>
+<script src="lib/auto-render.min.js"></script>
+
+<!-- React libraries -->
+<script src="lib/react.production.min.js"></script>
+<script src="lib/react-dom.production.min.js"></script>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<!-- Auth + app bootstrapping -->
+<script src="auth-client.js"></script>
+
+</body>
+</html>

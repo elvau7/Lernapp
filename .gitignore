@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs / temporary files
+*.log
+*.tmp
+*.temp
+
+# Python cache / venv (for helper scripts)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Build / cache output
+dist/
+build/
+coverage/
+.cache/
+
+# IDE / editor state
+.idea/
+.vscode/
+
+# Project-local helper/generated areas not needed for deployment
+data/
+Unbrauchbar/
