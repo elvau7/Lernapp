@@ -88,7 +88,7 @@ const bioScriptHtml = (path) => {
 SUBJECTS.push({
   name: "Biochemie Skripte",
   icon: "📄",
-  description: "Skriptteile als HTML (13 Teile).",
+  description: "🚧 Work in Progress - Skriptteile als HTML (13 Teile).",
   kk: [],
   lt: [],
   mc: [],
