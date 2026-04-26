@@ -4,7 +4,7 @@ window.SUPABASE_CONFIG = {
   anonKey: "sb_publishable_pQPtryK705fuHNEpvgjVhA_ZMzlPUJG",
   usernameDomain: "users.local",
   // If username is not listed, defaultLevel is used.
-  defaultLevel: "economics",
+  defaultLevel: "molekularbiologie",
   // Map app usernames to levels.
   userLevels: {
     admin: "admin",
@@ -22,6 +22,6 @@ window.SUPABASE_CONFIG = {
       "Einführung in die BWL",
       "Finanz",
     ],
-    molekularbiologie: ["Biochemie", "Strukturformeln"],
+    molekularbiologie: ["Biochemie", "Biochemie Skripte", "Strukturformeln"],
   },
 };

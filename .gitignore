@@ -35,7 +35,13 @@ coverage/
 
 # Local AI/context docs not for remote
 CLAUDE.md
+.claude/
 README.md
+README.local.md
+**/README
+**/README.*
+**/readme
+**/readme.*
 
 # Project-local helper/generated areas not needed for deployment
 data/

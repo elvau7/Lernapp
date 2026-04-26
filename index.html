@@ -19,6 +19,7 @@
     <div class="login-logo">
       <h1>Lernapp</h1>
       <p>Bitte melde dich an, um fortzufahren</p>
+      <button id="mobile-help-btn" class="mobile-help-btn hidden" type="button" aria-haspopup="dialog" aria-controls="mobile-help-dialog" aria-label="Anleitung als Web-App am Handy">💡</button>
     </div>
     <div class="login-field">
       <label for="login-username">Benutzername</label>
@@ -33,11 +34,61 @@
     </div>
     <div class="login-error-msg" id="login-errmsg"></div>
     <button class="login-btn" id="login-btn">Einloggen</button>
+    <button class="login-btn login-btn-secondary" id="signup-btn">Registrierungsanfrage stellen</button>
   </div>
 </div>
 
 <!-- ── REACT ROOT ── -->
 <div id="react-root"></div>
+<div id="mobile-help-dialog" class="mobile-help-dialog hidden" role="dialog" aria-modal="true" aria-labelledby="mobile-help-title">
+  <div class="mobile-help-card">
+    <div class="mobile-help-head">
+      <h2 id="mobile-help-title">Als Web-App am Handy nutzen</h2>
+      <button id="mobile-help-close" class="mobile-help-close" type="button" aria-label="Anleitung schließen">✕</button>
+    </div>
+    <div class="mobile-help-body">
+      <h3>iPhone (Safari)</h3>
+      <ol>
+        <li>App in Safari öffnen.</li>
+        <li>Unten auf Teilen tippen.</li>
+        <li><strong>Zum Home-Bildschirm</strong> wählen.</li>
+        <li>Name bestätigen und <strong>Hinzufügen</strong> tippen.</li>
+      </ol>
+      <h3>Android (Chrome)</h3>
+      <ol>
+        <li>App in Chrome öffnen.</li>
+        <li>Oben rechts auf die drei Punkte tippen.</li>
+        <li><strong>Zum Startbildschirm hinzufügen</strong> oder <strong>App installieren</strong> wählen.</li>
+        <li>Bestätigen.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<button id="admin-open-btn" class="admin-open-btn hidden" type="button">Admin</button>
+<div id="admin-panel" class="admin-panel hidden" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+  <div class="admin-card">
+    <div class="admin-header">
+      <h2 id="admin-title">Registrierungsanfragen</h2>
+      <button id="admin-close-btn" class="admin-close-btn" type="button" aria-label="Admin-Bereich schließen">✕</button>
+    </div>
+    <div id="admin-message" class="admin-message"></div>
+    <div class="admin-tabs">
+      <button id="admin-tab-pending" class="admin-tab-btn active" type="button">Pending</button>
+      <button id="admin-tab-all" class="admin-tab-btn" type="button">Alle Nutzer</button>
+    </div>
+    <div class="admin-toolbar">
+      <button id="admin-refresh-btn" class="admin-refresh-btn" type="button">Aktualisieren</button>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr id="admin-table-head-row"></tr>
+        </thead>
+        <tbody id="admin-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <!-- KaTeX -->
 <script src="lib/katex.min.js"></script>
