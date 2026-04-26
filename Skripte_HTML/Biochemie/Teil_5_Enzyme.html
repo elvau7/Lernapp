@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teil 5 Enzyme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="readme-doc-style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <h1>Teil 5 Enzyme</h1>
+      <div class="meta">Ausführliches browserlesbares Lernskript mit erklärenden HTML-Diagrammen</div>
+    </header>
+    <section class="content">
+<!-- toc-generated-start -->
+<nav class="toc" aria-label="Kapitelinhalt">
+  <strong>Kapitelinhalt</strong>
+  <ol>
+    <li><a href="#leitidee-des-kapitels">Leitidee des Kapitels</a></li>
+    <li><a href="#thermodynamik-was-moeglich-ist-und-was-spontan-laeuft">Thermodynamik: was moeglich ist und was spontan laeuft</a></li>
+    <li><a href="#aktivierungsenergie-und-rolle-der-enzyme">Aktivierungsenergie und Rolle der Enzyme</a></li>
+    <li><a href="#aktives-zentrum-uebergangszustand-und-bindungsenergie">Aktives Zentrum, Uebergangszustand und Bindungsenergie</a></li>
+    <li><a href="#induced-fit-und-dynamische-passung">Induced Fit und dynamische Passung</a></li>
+    <li><a href="#stereospezifitaet-auch-bei-prochiralen-substraten">Stereospezifitaet auch bei prochiralen Substraten</a></li>
+    <li><a href="#warum-enzymkatalysierte-reaktionen-biologisch-ueberlegen-sind">Warum enzymkatalysierte Reaktionen biologisch ueberlegen sind</a></li>
+    <li><a href="#klassifikation-der-enzyme-nach-reaktionstyp">Klassifikation der Enzyme nach Reaktionstyp</a></li>
+    <li><a href="#kinetischer-grundmechanismus-der-enzymreaktion">Kinetischer Grundmechanismus der Enzymreaktion</a></li>
+    <li><a href="#michaelis-menten-diagramm-und-praktische-messung">Michaelis-Menten-Diagramm und praktische Messung</a></li>
+    <li><a href="#lineweaver-burk-darstellung-und-parameteranalyse">Lineweaver-Burk-Darstellung und Parameteranalyse</a></li>
+    <li><a href="#aktivitaetsangaben-und-katalytische-kennzahlen">Aktivitaetsangaben und katalytische Kennzahlen</a></li>
+    <li><a href="#ph-optimum-von-enzymreaktionen">pH-Optimum von Enzymreaktionen</a></li>
+    <li><a href="#reversible-und-irreversible-inhibition">Reversible und irreversible Inhibition</a></li>
+    <li><a href="#regulationsprinzipien-der-enzymaktivitaet">Regulationsprinzipien der Enzymaktivitaet</a></li>
+    <li><a href="#allosterische-regulation-am-beispiel-atcase">Allosterische Regulation am Beispiel ATCase</a></li>
+    <li><a href="#isoenzyme-am-beispiel-der-lactatdehydrogenase">Isoenzyme am Beispiel der Lactatdehydrogenase</a></li>
+    <li><a href="#kovalente-modifikation-durch-signalwege">Kovalente Modifikation durch Signalwege</a></li>
+    <li><a href="#proteolytische-aktivierung-von-zymogenen">Proteolytische Aktivierung von Zymogenen</a></li>
+    <li><a href="#coenzyme-cofaktoren-und-prosthetische-gruppen">Coenzyme, Cofaktoren und prosthetische Gruppen</a></li>
+    <li><a href="#redoxaequivalente-nad-fad-und-ubichinon">Redoxaequivalente NAD, FAD und Ubichinon</a></li>
+    <li><a href="#gruppenuebertraeger-atp-sam-und-coenzym-a">Gruppenuebertraeger: ATP, SAM und Coenzym A</a></li>
+    <li><a href="#nukleotide-als-chemische-und-biologische-plattform">Nukleotide als chemische und biologische Plattform</a></li>
+    <li><a href="#pathophysiologie-des-b-vitaminmangels">Pathophysiologie des B-Vitaminmangels</a></li>
+    <li><a href="#gesamteinordnung-von-teil-5">Gesamteinordnung von Teil 5</a></li>
+    <li><a href="#vertiefter-erklarteil">Vertiefter Erklärteil</a></li>
+  </ol>
+</nav>
+<!-- toc-generated-end -->
+<h1>Teil 5: Enzyme</h1>
+<h2 id="leitidee-des-kapitels">Leitidee des Kapitels</h2>
+<p>Teil 5 beschreibt, wie Enzyme thermodynamisch moegliche Reaktionen in biologisch nutzbare, schnelle und regulierbare Prozesse uebersetzen. Die Folien starten deshalb nicht mit Details einzelner Proteine, sondern mit Energiefluss in lebenden Systemen. Eine Zelle ist ein offenes System, das Materie und Energie mit der Umgebung austauscht. Genau deshalb muessen Enzymreaktionen immer in zwei Dimensionen gedacht werden, naemlich als Frage der energetischen Richtung und als Frage der Reaktionsgeschwindigkeit.</p>
+<h2 id="thermodynamik-was-moeglich-ist-und-was-spontan-laeuft">Thermodynamik: was moeglich ist und was spontan laeuft</h2>
+<p>Ausgehend vom ersten Hauptsatz wird festgehalten, dass Energie nicht erzeugt oder vernichtet, sondern nur umgewandelt werden kann. Die Enthalpie wird in den Folien als Waermeinhalt bei konstantem Druck eingefuehrt und ueber</p>
+<div class="equation"><span class="math-text">ΔH = ΔU + pΔV.</span></div>
+<p>beschrieben. Exotherme Reaktionen geben Waerme frei und haben <span class="chem">Δ H &lt; 0</span>, endotherme Reaktionen benoetigen Waermezufuhr und haben <span class="chem">Δ H &gt; 0</span>.</p>
+<p>Als zweite Groesse wird die Entropie als Mass fuer Unordnung und Zahl mikroskopischer Zustaende eingefuehrt. Der zweite Hauptsatz bedeutet fuer abgeschlossene Systeme eine Zunahme der Entropie. Fuer biochemische Prozesse entscheidet aber die freie Enthalpie</p>
+<div class="equation"><span class="math-text">ΔG = ΔH - TΔS.</span></div>
+<p>Ist <span class="chem">Δ G &lt; 0</span>, laeuft ein Prozess exergon und spontan. Ist <span class="chem">Δ G &gt; 0</span>, ist er endergon und benoetigt Kopplung an energieliefernde Schritte.</p>
+<p>Die Verbindung zum chemischen Gleichgewicht wird in den Folien ueber</p>
+<div class="equation"><span class="math-text">ΔG° = -RT ln K<sub>eq</sub>.</span></div>
+<p>hergestellt. Damit wird klar, dass <span class="chem">K<sub>eq</sub></span> direkt mit der Standardtriebkraft zusammenhaengt. Bei <span class="chem">Δ G = 0</span> ist das Fliessgleichgewicht erreicht, es gibt dann keine netto gerichtete Triebkraft mehr.</p>
+<section class="callout"><h3>Kernaussage der Thermodynamikfolien</h3><p>Die Thermodynamik beantwortet die Frage, ob eine Reaktion grundsaetzlich guenstig ist. Sie beantwortet nicht, ob sie in einer lebenden Zelle schnell genug ablaeuft.</p></section>
+<h2 id="aktivierungsenergie-und-rolle-der-enzyme">Aktivierungsenergie und Rolle der Enzyme</h2>
+<p>Eine zentrale Folienaussage ist, dass selbst stark exergone Reaktionen bei Raumtemperatur praktisch stillstehen koennen, wenn die Aktivierungsbarriere hoch ist. Das typische Beispiel ist die Oxidation energiereicher organischer Stoffe, die ohne Zuendung nicht mit messbarer Geschwindigkeit ablaeuft. Enzyme beschleunigen solche Prozesse, indem sie den Uebergangszustand stabilisieren und damit die erforderliche Aktivierungsenergie senken.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">ohne Enzym</div>
+        <div class="diagram-node">mit Enzym</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Die Katalyse senkt die Barrierehoehe, veraendert aber nicht die Energiedifferenz zwischen Ausgangs- und Endzustand.</figcaption>
+    </figure>
+<p>Die Folien unterstreichen damit die Trennung von Kinetik und Thermodynamik. Das Gleichgewicht einer Reaktion wird durch das Enzym nicht verschoben. Das Enzym beschleunigt den Hin- und Rueckweg gleichermassen, wodurch das Gleichgewicht nur schneller erreicht wird.</p>
+<h2 id="aktives-zentrum-uebergangszustand-und-bindungsenergie">Aktives Zentrum, Uebergangszustand und Bindungsenergie</h2>
+<p>Ein Schluesselpunkt der Vorlesung ist die Aussage, dass das aktive Zentrum komplementaer zum Uebergangszustand und nicht primar zum unveraenderten Substrat ist. Diese Sicht erklaert, warum die Bindungsenergie der Enzym-Substrat-Wechselwirkung als Hauptbeitrag zur Senkung der Aktivierungsenergie dient. Das Enzym nutzt guenstige Wechselwirkungen, um genau den hochenergetischen Zwischenzustand zu stabilisieren, der ohne Katalyse nur kurz und selten erreicht wird.</p>
+<p>Die Folien nennen die klassischen nicht-kovalenten Kraefte als Grundlage der Substratbindung. Dazu gehoeren Wasserstoffbruecken, ionische Wechselwirkungen, hydrophobe Kontakte und van-der-Waals-Wechselwirkungen. Aus der Summe vieler schwacher Kontakte entsteht eine hochspezifische und zugleich reversible Bindung.</p>
+<h2 id="induced-fit-und-dynamische-passung">Induced Fit und dynamische Passung</h2>
+<p>Das Induced-Fit-Modell wird mit der Bindung von Glucose an Glucokinase erklaert. In diesem Modell ist das Enzym nicht starr, sondern nimmt nach Substratkontakt eine besser passende Konformation ein. Die Folge ist eine genauere Ausrichtung katalytischer Gruppen, ein Ausschluss von Wasser an unguenstigen Stellen und damit eine hoehere katalytische Effizienz. Die Folien machen damit deutlich, dass Spezifitaet in der Biochemie dynamisch entsteht.</p>
+<h2 id="stereospezifitaet-auch-bei-prochiralen-substraten">Stereospezifitaet auch bei prochiralen Substraten</h2>
+<p>Die Beispiele mit Alkoholdehydrogenase und Lysozym zeigen, dass Enzyme stereoselektiv reagieren, selbst wenn ein Substrat formal achiral oder prochiral ist. Die Ursache liegt in der chiralen Umgebung des aktiven Zentrums. Dieses erzwingt eine definierte Orientierung, sodass nur bestimmte Reaktionswege geometrisch und elektronisch zugaenglich bleiben.</p>
+<h2 id="warum-enzymkatalysierte-reaktionen-biologisch-ueberlegen-sind">Warum enzymkatalysierte Reaktionen biologisch ueberlegen sind</h2>
+<p>Die Folien fassen die Vorteile inhaltlich als Kombination aus hoher Geschwindigkeit, milderen Reaktionsbedingungen, hoher Substrat- und Produktspezifitaet sowie guter Regulierbarkeit zusammen. Dieser Verbund ist entscheidend fuer den Stoffwechsel. Ohne Enzyme waeren viele Reaktionen entweder zu langsam, zu unspezifisch oder nur unter zelltoxischen Bedingungen moeglich.</p>
+<h2 id="klassifikation-der-enzyme-nach-reaktionstyp">Klassifikation der Enzyme nach Reaktionstyp</h2>
+<p>Die Einteilung in sechs Hauptklassen wird im Kapitel systematisch aufgebaut. Oxidoreduktasen katalysieren Elektronenuebertragungen und damit gekoppelte Oxidations- und Reduktionsschritte. Transferasen uebertragen funktionelle Gruppen wie Methyl-, Acyl- oder Phosphorylreste zwischen Substraten. Hydrolasen spalten Bindungen unter Beteiligung von Wasser. Lyasen katalysieren nicht-hydrolytische Spaltungen oder Additionen, oft unter Bildung oder Aufloesung von Doppelbindungen. Isomerasen ordnen Atome innerhalb eines Molekuels um und erzeugen Isomere. Ligasen verknuepfen zwei Molekuele kovalent unter Verbrauch chemischer Energie, typischerweise aus ATP.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">Oxidoreduktasen / Redoxreaktionen</div>
+        <div class="diagram-node">Transferasen / Gruppenuebertragung</div>
+        <div class="diagram-node">Hydrolasen / Spaltung mit Wasser</div>
+        <div class="diagram-node">Lyasen / nicht-hydrolytische Spaltung/Addition</div>
+        <div class="diagram-node">Isomerasen / intramolekulare Umlagerung</div>
+        <div class="diagram-node">Ligasen / kovalente Verknuepfung mit Energieeinsatz</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Funktionsorientierte Enzymklassifikation der Folien.</figcaption>
+    </figure>
+<p>Bei den Beispielen werden Dehydrogenasen, Kinasen, Peptidasen, Aldolasen, Racemasen und DNA-Ligasen genannt. Die didaktische Pointe liegt darin, dass die Klassifikation den Reaktionstyp beschreibt und nicht den Gewebeort oder die Proteinstruktur.</p>
+<h2 id="kinetischer-grundmechanismus-der-enzymreaktion">Kinetischer Grundmechanismus der Enzymreaktion</h2>
+<p>Die Kinetikfolien starten mit der Sequenz</p>
+<div class="equation"><span class="math-text">E + S ⇌ ES ⇌ EP ⇌ E + P</span></div>
+<p>und vereinfachen fuer die Michaelis-Menten-Herleitung auf</p>
+<div class="equation"><span class="math-text">E + S ⇌ ES → E + P.</span></div>
+<p>Mit den Geschwindigkeitskonstanten <span class="chem">k<sub>1</sub></span>, <span class="chem">k<sub>-1</sub></span> und <span class="chem">k<sub>2</sub></span> gilt unter stationaerer Naeherung fuer den ES-Komplex:</p>
+<div class="equation"><span class="math-text">k<sub>1</sub>[E][S] = (k<sub>-1</sub> + k<sub>2</sub>)[ES].</span></div>
+<p>Daraus folgt</p>
+<div class="equation"><span class="math-text">K<sub>M</sub> = (k<sub>-1</sub> + k<sub>2</sub>) / k<sub>1</sub>.</span></div>
+<p>Mit der Erhaltungsbeziehung <span class="chem">[E<sub>T</sub>]=[E]+[ES]</span> und der Reaktionsgeschwindigkeit <span class="chem">v=k<sub>2</sub>[ES]</span> erhaelt man die bekannte Form</p>
+<div class="equation"><span class="math-text">v = V<sub>max</sub>[S] / (K<sub>M</sub> + [S]); V<sub>max</sub> = k<sub>cat</sub>[E<sub>T</sub>].</span></div>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">E+S</div>
+        <div class="diagram-node">ES</div>
+        <div class="diagram-node">E+P</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Kinetisches Minimalmodell der Michaelis-Menten-Reaktion.</figcaption>
+    </figure>
+<p>Die Folien erklaeren ausserdem, dass <span class="chem">K<sub>M</sub></span> bei <span class="chem">k<sub>2</sub> ll k<sub>-1</sub></span> naeherungsweise der Dissoziationskonstante <span class="chem">K<sub>D</sub></span> entspricht. In diesem Spezialfall kann ein kleiner <span class="chem">K<sub>M</sub></span>-Wert direkt als hohe Substrataffinitaet gelesen werden. Allgemein bleibt <span class="chem">K<sub>M</sub></span> jedoch eine zusammengesetzte kinetische Groesse.</p>
+<h2 id="michaelis-menten-diagramm-und-praktische-messung">Michaelis-Menten-Diagramm und praktische Messung</h2>
+<p>Im Michaelis-Menten-Diagramm steigt die Anfangsgeschwindigkeit <span class="chem">v<sub>0</sub></span> mit der Substratkonzentration und naehrt sich asymptotisch <span class="chem">V<sub>max</sub></span>. Die Folien betonen die Definition, dass bei <span class="chem">[S]=K<sub>M</sub></span> genau die halbe Maximalgeschwindigkeit erreicht wird. Diese Beziehung erlaubt in der Praxis eine anschauliche Interpretation von Konzentrationsabhaengigkeiten.</p>
+<p>Die Zeit-Umsatz-Folien erklaeren, warum man in Experimenten initiale Geschwindigkeiten nutzt. Zu Beginn ist die Produktkonzentration noch klein, Rueckreaktionen sind vernachlaessigbar und die Substratkonzentration hat sich nur wenig veraendert. Spaetere Zeitpunkte sind weniger geeignet, weil Substratverbrauch, Produkthemmung und Enzyminstabilitaet die Auswertung verzerren koennen.</p>
+<h2 id="lineweaver-burk-darstellung-und-parameteranalyse">Lineweaver-Burk-Darstellung und Parameteranalyse</h2>
+<p>Die linearisierte Form</p>
+<div class="equation"><span class="math-text">1/v = (K<sub>M</sub>/V<sub>max</sub>) · (1/[S]) + 1/V<sub>max</sub>.</span></div>
+<p>wird in den Folien genutzt, um Parameterveraenderungen und Hemmtypen grafisch besser zu trennen. Der y-Achsenabschnitt entspricht <span class="chem">1/V<sub>max</sub></span>, der x-Achsenabschnitt <span class="chem">-1/K<sub>M</sub></span>, und die Steigung entspricht <span class="chem">K<sub>M</sub>/V<sub>max</sub></span>. Obwohl moderne Fits meist direkt nichtlinear erfolgen, bleibt die Darstellung didaktisch wertvoll, weil die Auswirkungen verschiedener Inhibitionsmechanismen sofort sichtbar werden.</p>
+<h2 id="aktivitaetsangaben-und-katalytische-kennzahlen">Aktivitaetsangaben und katalytische Kennzahlen</h2>
+<p>Die Vorlesung stellt mehrere Aktivitaetsmasse gegenueber. Das katal misst mol pro Sekunde, die IU misst Mikromol pro Minute, die spezifische Aktivitaet normiert Aktivitaet auf Proteinmenge, und <span class="chem">k<sub>cat</sub></span> beschreibt die Anzahl umgesetzter Substratmolekuele pro Enzymmolekuel und Zeit bei Saettigung. Zusammen erlauben diese Kennzahlen den Vergleich von Praeparationen, Reinheit und katalytischer Leistungsfaehigkeit.</p>
+<h2 id="ph-optimum-von-enzymreaktionen">pH-Optimum von Enzymreaktionen</h2>
+<p>Das pH-Optimum wird als Folge der Protonierungszustaende katalytischer Seitenketten und des Substrats erklaert. Bei unpassendem pH werden Ladungs- und Bindungsmuster veraendert, sodass entweder die Bindung schlechter wird oder die eigentliche Chemie im aktiven Zentrum nicht mehr effizient stattfindet. Darum besitzen verschiedene Enzyme unterschiedliche Optima, die zu ihrem physiologischen Einsatzort passen.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">saures Optimum</div>
+        <div class="diagram-node">neutral-alkalisches Optimum</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Schematische pH-Aktivitaetsprofile zeigen, dass unterschiedliche Enzyme unterschiedliche pH-Bereiche bevorzugen.</figcaption>
+    </figure>
+<h2 id="reversible-und-irreversible-inhibition">Reversible und irreversible Inhibition</h2>
+<p>Die Inhibitionsfolien unterscheiden kompetitive, unkompetitive und gemischte reversible Hemmung sowie irreversible Hemmung. Bei kompetitiver Hemmung konkurrieren Substrat und Inhibitor um das aktive Zentrum. Typisch ist ein erhoehter scheinbarer <span class="chem">K<sub>M</sub></span>-Wert bei unveraendertem <span class="chem">V<sub>max</sub></span>, weil hohe Substratkonzentrationen den Inhibitor verdraengen koennen. Als klinisches Beispiel nennen die Folien Ethanol bei Methanolvergiftung zur Verringerung der Formaldehydbildung durch Alkoholdehydrogenase.</p>
+<p>Bei unkompetitiver Hemmung bindet der Inhibitor an den ES-Komplex. Dadurch sinken in der Regel sowohl <span class="chem">K<sub>M</sub></span> als auch <span class="chem">V<sub>max</sub></span>. Die Folien nennen als Beispiel die Hemmung der Inositol-Monophosphatase durch Lithium in der Therapie bipolarer Stoerungen.</p>
+<p>Bei gemischter Hemmung bindet der Inhibitor sowohl an freies Enzym als auch an den ES-Komplex, was zu einer Kombination aus <span class="chem">V<sub>max</sub></span>-Abnahme und Verschiebung von <span class="chem">K<sub>M</sub></span> fuehrt. Als Beispiele werden Produkthemmungen im Stoffwechsel genannt, etwa ueber Glucose-6-phosphat oder ATP-abhaengige Rueckkopplung.</p>
+<p>Irreversible Hemmung bedeutet bleibende Inaktivierung durch kovalente Modifikation oder mechanismenbasierte Suizidinhibitoren. Die Folien nennen Allopurinol, das nach Umsetzung als Alloxanthin fest in der Xanthinoxidase verbleibt, sowie Acetylsalicylsaeure, die ein Serin im aktiven Zentrum der Cyclooxygenase acetyliert.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">ohne Inhibitor</div>
+        <div class="diagram-node">kompetitiv</div>
+        <div class="diagram-node">vermindertes <span class="chem">Vmax</span></div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Konzeptuelle Darstellung typischer Kinetikeffekte durch Inhibition.</figcaption>
+    </figure>
+<section class="callout"><h3>Interpretation</h3><p>Die Kurven sind als qualitatives Bild gedacht. Eine saubere Typisierung erfolgt immer ueber die Kombination aus Saettigungskurven, linearisierter Darstellung und passender mechanistischer Hypothese.</p></section>
+<h2 id="regulationsprinzipien-der-enzymaktivitaet">Regulationsprinzipien der Enzymaktivitaet</h2>
+<p>Nach den Inhibitionsmechanismen wechseln die Folien zur physiologischen Enzymregulation. Das Kapitel verbindet allosterische Kontrolle, Isoenzymmuster, kovalente Modifikation, proteolytische Aktivierung von Zymogenen und die Abhaengigkeit von Cofaktoren zu einem Gesamtbild. Die gemeinsame Funktion dieser Ebenen ist die zeitlich und gewebespezifisch angepasste Steuerung von Stoffwechselstroemen.</p>
+<h2 id="allosterische-regulation-am-beispiel-atcase">Allosterische Regulation am Beispiel ATCase</h2>
+<p>Die Aspartat-Transcarbamoylase wird als klassisches Rueckkopplungsenzym der Pyrimidinbiosynthese vorgestellt. CTP wirkt als Endproduktinhibitor, ATP als aktivierendes Signal. Die Folien zeigen ausserdem, dass die oligomere Struktur mit katalytischen und regulatorischen Einheiten kooperatives Verhalten ermoeglicht. Dadurch reagiert das Enzym sensitiv auf Aenderungen der Effektorlage und koppelt Flussraten an den Zellzustand.</p>
+<h2 id="isoenzyme-am-beispiel-der-lactatdehydrogenase">Isoenzyme am Beispiel der Lactatdehydrogenase</h2>
+<p>Isoenzyme katalysieren dieselbe Gesamtreaktion, unterscheiden sich aber in Aminosaeuresequenz, kinetischen Eigenschaften, Regulation und Gewebeverteilung. Fuer LDH wird das M-dominierte Isoenzym als an anaerobe Bedingungen im Skelettmuskel angepasst beschrieben, waehrend das H-dominierte Isoenzym unter aeroben Bedingungen im Herzmuskel bevorzugt arbeitet. Die gewebespezifische Expression erlaubt damit eine feine funktionelle Anpassung bei identischer Reaktionsgleichung.</p>
+<h2 id="kovalente-modifikation-durch-signalwege">Kovalente Modifikation durch Signalwege</h2>
+<p>Die Folien verwenden adrenerge Signalgebung als Beispiel fuer aktivierende Phosphorylierung. Ein extrazellulaeres Signal wie Adrenalin wird ueber Rezeptorbindung in eine intrazellulaere Kaskade uebersetzt, die Zielenzyme kovalent modifiziert und dadurch rasch ihren Aktivitaetszustand aendert. Dieser Schaltermechanismus ist schnell, reversibel und gut mit hormoneller Regulation vereinbar.</p>
+<h2 id="proteolytische-aktivierung-von-zymogenen">Proteolytische Aktivierung von Zymogenen</h2>
+<p>Ein zweiter grosser Regulierungsweg ist die limitierte Proteolyse inaktiver Vorstufen. Die Verdauungsfolien zeigen die Aktivierung pankreatischer Zymogene, etwa den Uebergang von Trypsinogen zu Trypsin nach Initialspaltung durch Enteropeptidase. Weitere proteolytische Aktivierungen schliessen sich in Kaskaden an und erzeugen eine starke Verstaerkung.</p>
+<p>Die Folien uebertragen dasselbe Prinzip auf die Blutgerinnung mit der Bildung eines Fibringerinnsels als funktionellem Endpunkt. In beiden Systemen verhindert die Synthese in inaktiver Form eine falsche Aktivitaet am Entstehungsort und erhoeht so die biologische Sicherheit.</p>
+<section class="callout"><h3>Funktioneller Sicherheitsgedanke</h3><p>Zymogene trennen den Ort der Synthese vom Ort der Wirkung. Erst die kontrollierte Aktivierung macht aus einer potenziell schaedigenden Protease ein nuetzliches physiologisches Werkzeug.</p></section>
+<h2 id="coenzyme-cofaktoren-und-prosthetische-gruppen">Coenzyme, Cofaktoren und prosthetische Gruppen</h2>
+<p>Im naechsten Block wird erklaert, dass viele Enzyme zusaetzliche Hilfsmolekuele benoetigen. Locker gebundene Co-Substrate werden waehrend der Reaktion umgesetzt und spaeter regeneriert, waehrend fest oder kovalent gebundene Hilfsgruppen als prosthetische Gruppen bezeichnet werden. Metallionen und organische Coenzyme erweitern das Reaktionsspektrum deutlich, insbesondere fuer Redox- und Gruppenuebertragungen.</p>
+<h2 id="redoxaequivalente-nad-fad-und-ubichinon">Redoxaequivalente NAD, FAD und Ubichinon</h2>
+<p>NAD<sup>+</sup>/NADH wird als Cofaktor fuer Redoxenzyme mit Uebertragung von zwei Elektronen und einem Proton eingefuehrt. Biochemisch wird die nicotinamidhaltige Struktur aus Vitamin-B3-Vorstufen abgeleitet. FAD/FADH<sub>2</sub> basiert auf Riboflavin, also Vitamin B2, und kann je nach Enzym ein- oder zweistufige Elektronenuebertraege vermitteln. Ubichinon (Coenzym Q10) wird als lipophiler Membrantraeger dargestellt und ist damit besonders fuer Elektronentransport in membrangebundenen Systemen relevant.</p>
+<h2 id="gruppenuebertraeger-atp-sam-und-coenzym-a">Gruppenuebertraeger: ATP, SAM und Coenzym A</h2>
+<p>Die Folien verknuepfen Energiewirtschaft und Chemie ueber Carriermolekuele. ATP wird als Donator von Phosphoryl-, Pyrophosphoryl- und Adenylatgruppen dargestellt. Die freie Standardreaktionsenthalpie der ATP-Hydrolyse wird mit etwa <span class="chem">Δ G'^° = -30,6\ kJ/mol</span> angegeben. Besonders wichtig ist die Einordnung des grossen ATP-Turnovers im Menschen. Der taegliche Energieumsatz impliziert, dass ein kleines ATP-Gesamtpool sehr haeufig zyklisch hydrolysiert und regeneriert wird.</p>
+<p>Die Folien sprechen auch die Resonanzstabilisierung der Hydrolyseprodukte als thermodynamischen Beitrag zur Triebkraft an. Damit wird deutlich, dass ATP nicht wegen einer ``magischen Bindung'' energiereich ist, sondern wegen des Gesamtvergleichs zwischen Ausgangs- und Produktzustand.</p>
+<p>S-Adenosylmethionin wird als zentraler Methylgruppendonator vorgestellt, gebildet durch Methionin-Adenosyltransferase. Der Methioninzyklus koppelt diese Reaktionen an Folat- und Cobalamin-abhaengige Schritte und schafft damit eine direkte Verbindung zwischen Ein-Kohlenstoff-Stoffwechsel, Methylierung und Vitaminversorgung.</p>
+<p>Coenzym A wird als Acylgruppenuebertraeger erklaert. Die Sulfhydrylgruppe der Mercaptoethylamineinheit bildet Thioester, beispielsweise in Acetyl-CoA. Diese Bindungsform erleichtert den nachfolgenden Acyltransfer und macht CoA zu einem Schluesselmolekuel des Intermediaerstoffwechsels.</p>
+<h2 id="nukleotide-als-chemische-und-biologische-plattform">Nukleotide als chemische und biologische Plattform</h2>
+<p>In den Folien wird zusaetzlich die Grundidee der Nukleotide wiederholt. Ein Nukleotid besteht aus Nukleosid plus Phosphat und dient nicht nur als Baustein von RNA und DNA, sondern auch als universelles chemisches Modul in Energie- und Gruppenuebertragung. Damit verbindet dieser Abschnitt Strukturchemie direkt mit Enzymfunktion.</p>
+<h2 id="pathophysiologie-des-b-vitaminmangels">Pathophysiologie des B-Vitaminmangels</h2>
+<p>Die Abschlussfolie ueberfuehrt die Enzymchemie in klinische Konsequenzen. Niacinmangel, also B3-Mangel, wird mit Pellagra verknuepft und betrifft Haut, Schleimhaeute, kognitive Leistung und Allgemeinzustand. Riboflavinmangel, also B2-Mangel, wird mit entzuendlichen Veraenderungen an Haut und Schleimhaeuten sowie Lichtempfindlichkeit beschrieben. Folsaeuremangel, also B9-Mangel, fuehrt zu megaloblastaerer Anaemie und erhoeht in der Embryonalentwicklung das Risiko fuer Neuralrohrdefekte.</p>
+<p>Bei Cobalaminmangel, also B12-Mangel, werden megaloblastaere Anaemie und neurologische Stoerungen ueber die gestoerte Methionin-Synthase-Aktivitaet verbunden. Pantothensaeuremangel, also B5-Mangel, wird mit unspezifischer Erschoepfung, neuromuskulaeren Beschwerden und dem Burning-Feet-Syndrom assoziiert. Thiaminmangel, also B1-Mangel, wird im Kontext von Mangelernaehrung und Alkoholismus mit Beriberi, kardialen Symptomen und neurologischer Symptomatik beschrieben.</p>
+<p>Dieser Schluss zeigt den roten Faden des gesamten Teils. Coenzyme sind keine Randnotiz, sondern funktionelle Voraussetzung zahlreicher Enzymreaktionen. Vitaminmangel wird damit zu einem direkten Enzymdefizit auf Systemebene.</p>
+<h2 id="gesamteinordnung-von-teil-5">Gesamteinordnung von Teil 5</h2>
+<p>Teil 5 spannt einen konsistenten Bogen von physikalischer Triebkraft ueber molekulare Katalyse bis zu Regulation und Pathophysiologie. Die Folien machen klar, dass Enzyme Reaktionen nicht nur beschleunigen, sondern den gesamten Stoffwechsel zeitlich, raeumlich und funktionell organisieren. Thermodynamik liefert die Richtung, Kinetik liefert das Tempo, Regulation liefert den Kontext, und Cofaktoren sichern die chemische Umsetzbarkeit in vivo.</p>
+<!-- deep-dive-generated-start -->
+<section class="deep-dive">
+  <h2 id="vertiefter-erklarteil">Vertiefter Erklärteil</h2>
+  <p>Enzyme verbinden Thermodynamik mit Geschwindigkeit. Sie machen unguenstige Reaktionen nicht magisch guenstig, sondern senken Aktivierungsbarrieren, koppeln Reaktionen und erlauben praezise Regulation.</p>
+  <p class="keyline">Merke: Delta G entscheidet ueber die Lage des Gleichgewichts, die Aktivierungsenergie entscheidet ueber die Geschwindigkeit. Enzyme veraendern vor allem die Geschwindigkeit, nicht die Gesamtbilanz.</p>
+  <div class="detail-grid">
+      <article class="detail-card">
+        <h3>Thermodynamik versus Kinetik</h3>
+        <ul>
+          <li>Eine exergone Reaktion kann trotzdem langsam sein, wenn die Aktivierungsenergie hoch ist. Enzyme stabilisieren den Uebergangszustand und erhoehen so die Reaktionsrate.</li>
+          <li>Delta G wird durch Konzentrationen, Temperatur und Gleichgewichtslage bestimmt. In Zellen werden Reaktionen oft durch Produktentzug oder Kopplung an ATP-Hydrolyse verschoben.</li>
+          <li>Das aktive Zentrum ist nicht einfach komplementaer zum Substrat, sondern besonders gut zum Uebergangszustand. Diese Idee erklaert die enorme katalytische Beschleunigung.</li>
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h3>Michaelis-Menten-Logik</h3>
+        <ul>
+          <li>Km ist die Substratkonzentration bei halber Maximalgeschwindigkeit. Niedriges Km bedeutet oft hohe scheinbare Affinitaet, muss aber immer im Mechanismuskontext gelesen werden.</li>
+          <li>Vmax beschreibt die maximale Geschwindigkeit bei Substratsaettigung. Sie haengt von Enzymmenge und katalytischer Umsatzzahl ab.</li>
+          <li>kcat/Km ist ein Effizienzmass bei niedriger Substratkonzentration und verbindet Bindung, Katalyse und Produktbildung in einem Parameter.</li>
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h3>Inhibition und Regulation</h3>
+        <ul>
+          <li>Kompetitive Inhibitoren konkurrieren mit dem Substrat um das aktive Zentrum; hohe Substratkonzentration kann die Hemmung teilweise ueberwinden.</li>
+          <li>Nichtkompetitive oder gemischte Hemmung veraendert die Enzymfunktion auch ausserhalb der Substratbindung. Dadurch sinkt haeufig Vmax.</li>
+          <li>Allosterische Regulation nutzt Bindestellen ausserhalb des aktiven Zentrums. Sie erlaubt schnelle, reversible Anpassung an den Stoffwechselzustand.</li>
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h3>Cofaktoren als chemische Spezialwerkzeuge</h3>
+        <ul>
+          <li>Viele Reaktionstypen sind mit Aminosaeureseitenketten allein nicht moeglich. Cofaktoren uebernehmen Elektronen, Acylgruppen, C1-Gruppen oder Radikalchemie.</li>
+          <li>NAD und FAD sind Redoxtraeger, Coenzym A traegt Acylgruppen, ATP uebertraegt Phosphorylgruppen und SAM liefert Methylgruppen.</li>
+          <li>Vitaminmangel wird biochemisch verstaendlich, wenn das Vitamin Vorstufe eines Cofaktors ist. Dann fallen ganze Reaktionsklassen aus oder werden gebremst.</li>
+        </ul>
+      </article>
+  </div>
+  <section class="callout exam-box">
+    <h3>Prüfungsfokus und aktive Wiederholung</h3>
+    <ul>
+      <li>Erklaere anhand eines Energiediagramms, was ein Enzym veraendert und was nicht.</li>
+      <li>Vergleiche kompetitive, nichtkompetitive und irreversible Hemmung in Bezug auf Km und Vmax.</li>
+      <li>Ordne NAD, FAD, CoA, ATP, SAM und PLP jeweils einer typischen chemischen Aufgabe zu.</li>
+    </ul>
+  </section>
+</section>
+<!-- deep-dive-generated-end -->
+    </section>
+  </main>
+</body>
+</html>

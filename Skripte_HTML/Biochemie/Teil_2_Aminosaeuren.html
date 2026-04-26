@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teil 2 Aminosaeuren</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="readme-doc-style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <h1>Teil 2 Aminosaeuren</h1>
+      <div class="meta">Ausführliches browserlesbares Lernskript mit erklärenden HTML-Diagrammen</div>
+    </header>
+    <section class="content">
+<!-- toc-generated-start -->
+<nav class="toc" aria-label="Kapitelinhalt">
+  <strong>Kapitelinhalt</strong>
+  <ol>
+    <li><a href="#proteine-als-zentrale-funktionsmolekule">Proteine als zentrale Funktionsmoleküle</a></li>
+    <li><a href="#chemische-grundlagen-der-aminosauren">Chemische Grundlagen der Aminosäuren</a></li>
+    <li><a href="#stereochemie-chiralitat-und-optische-aktivitat">Stereochemie, Chiralität und optische Aktivität</a></li>
+    <li><a href="#analytischer-nachweis-von-aminosauren-und-peptiden">Analytischer Nachweis von Aminosäuren und Peptiden</a></li>
+    <li><a href="#peptidbindung-peptide-und-sequenzraum">Peptidbindung, Peptide und Sequenzraum</a></li>
+    <li><a href="#proteinsequenzierung-und-peptidsynthese">Proteinsequenzierung und Peptidsynthese</a></li>
+    <li><a href="#strukturebenen-und-planaritat-der-peptidbindung">Strukturebenen und Planarität der Peptidbindung</a></li>
+    <li><a href="#sekundarstrukturen-helix-faltblatt-und-turns">Sekundärstrukturen: α -Helix, β -Faltblatt und Turns</a></li>
+    <li><a href="#denaturierung-renaturierung-und-proteinfaltung">Denaturierung, Renaturierung und Proteinfaltung</a></li>
+    <li><a href="#trennung-und-charakterisierung-von-proteinen">Trennung und Charakterisierung von Proteinen</a></li>
+    <li><a href="#strukturaufklarung-von-proteinen">Strukturaufklärung von Proteinen</a></li>
+    <li><a href="#zusammenfassung-des-zweiten-teils">Zusammenfassung des zweiten Teils</a></li>
+    <li><a href="#vertiefter-erklarteil">Vertiefter Erklärteil</a></li>
+  </ol>
+</nav>
+<!-- toc-generated-end -->
+<h1>Teil 2: Aminosäuren und Proteine</h1>
+<h2 id="proteine-als-zentrale-funktionsmolekule">Proteine als zentrale Funktionsmoleküle</h2>
+<p>Proteine übernehmen in Zellen gleichzeitig strukturelle, katalytische, regulatorische und transportbezogene Aufgaben. Sie bilden Membrankomponenten, kontraktile Elemente der Muskulatur und Teile der extrazellulären Matrix. Sie wirken als Enzyme, vermitteln Informationsübertragung über Rezeptoren und Hormone, sind für Immunabwehrmechanismen essenziell und übernehmen Transportfunktionen wie im Fall des Hämoglobins. Diese funktionelle Vielseitigkeit beruht darauf, dass Proteine Polymere aus Aminosäuren sind, deren Sequenz die dreidimensionale Struktur und damit die Funktion festlegt.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">Struktur</div>
+        <div class="diagram-node">Katalyse</div>
+        <div class="diagram-node">Signalgebung</div>
+        <div class="diagram-node">Transport/Abwehr</div>
+        <div class="diagram-node">Protein</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Funktionsspektrum von Proteinen in biologischen Systemen (schematisch).</figcaption>
+    </figure>
+<h2 id="chemische-grundlagen-der-aminosauren">Chemische Grundlagen der Aminosäuren</h2>
+<p>Aminosäuren besitzen eine Aminogruppe, eine Carboxylgruppe, ein Wasserstoffatom und eine Seitenkette am <span class="chem">α</span>-Kohlenstoff. Durch diese Struktur können sie als Ampholyte sowohl Protonen aufnehmen als auch abgeben. In wässriger Lösung liegen sie in Abhängigkeit vom pH-Wert in verschiedenen Protonierungszuständen vor. Besonders stabil ist oft die Zwitterionenform mit positiver Ladung an der Aminogruppe und negativer Ladung an der Carboxylgruppe.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">H3N+\! - CH(R)-COOH</div>
+        <div class="diagram-node">H3N+\! - CH(R)-COO-</div>
+        <div class="diagram-node">H2N-CH(R)-COO-</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Schematischer Übergang der Protonierungszustände einer Aminosäure.</figcaption>
+    </figure>
+<p>Der isoelektrische Punkt <span class="chem">pI</span> ist der pH-Wert, bei dem die Nettoladung null ist. Für Aminosäuren ohne ionisierbare Seitenkette wird er näherungsweise als Mittelwert der beiden relevanten <span class="chem">pK<sub>a</sub></span>-Werte berechnet:</p>
+<div class="equation"><span class="math-text">pI ≈ (pK<sub>a,COOH</sub> + pK<sub>a,NH3+</sub>) / 2.</span></div>
+<p>Bei sauren oder basischen Seitenketten müssen die beiden <span class="chem">pK<sub>a</sub></span>-Werte gemittelt werden, zwischen denen die neutrale Nettoladung liegt.</p>
+<section class="callout"><h3>Warum der isoelektrische Punkt praktisch wichtig ist</h3><p>Die Nettoladung beeinflusst sowohl Löslichkeit als auch Bewegung im elektrischen Feld. In der Nähe des <span class="chem">pI</span> sinkt die elektrostatische Abstoßung zwischen Proteinmolekülen, wodurch Aggregation und Fällung begünstigt werden können.</p></section>
+<h2 id="stereochemie-chiralitat-und-optische-aktivitat">Stereochemie, Chiralität und optische Aktivität</h2>
+<p>Die meisten proteinogenen Aminosäuren sind chiral und liegen als Enantiomere vor. In biologischen Proteinen werden nahezu ausschließlich L-Aminosäuren eingebaut. Diese stereochemische Selektivität ist funktionell entscheidend, weil Enzyme und Rezeptoren selbst chiral sind und dadurch Enantiomere unterschiedlich erkennen.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">L-Form (Fischer-Projektion)</div>
+        <div class="diagram-node">COO-</div>
+        <div class="diagram-node">H3N+ - C* - H</div>
+        <div class="diagram-node">R</div>
+        <div class="diagram-node">D-Form (Fischer-Projektion)</div>
+        <div class="diagram-node">H - C* - NH3+</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Enantiomere Darstellung von Aminosäuren in der Fischer-Projektion.</figcaption>
+    </figure>
+<p>Optische Aktivität wird mit dem Polarimeter gemessen. Dabei dreht ein chirales Molekül die Ebene linear polarisierten Lichts nach rechts oder links. Die Drehrichtung allein ist jedoch nicht identisch mit der D/L-Nomenklatur. Pharmakologisch kann diese Unterscheidung entscheidend sein, weil ein Enantiomer therapeutisch wirksam und das andere weniger wirksam oder sogar toxisch sein kann.</p>
+<h2 id="analytischer-nachweis-von-aminosauren-und-peptiden">Analytischer Nachweis von Aminosäuren und Peptiden</h2>
+<p>Aromatische Aminosäuren absorbieren im UV-Bereich und können photometrisch quantifiziert werden. Die Beziehung zwischen Extinktion, Konzentration und Schichtdicke wird durch das Lambert-Beer-Gesetz beschrieben:</p>
+<div class="equation"><span class="math-text">A = ε · c · l.</span></div>
+<p>Der Ninhydrin-Nachweis reagiert mit primären Aminogruppen und erzeugt eine charakteristische Farbreaktion. Die Biuret-Reaktion ist hingegen ein Nachweis für Peptidbindungen und damit für Peptide oder Proteine, nicht für freie einzelne Aminosäuren.</p>
+<section class="callout"><h3>Einordnung: Unterschied Ninhydrin versus Biuret</h3><p>Ninhydrin ist besonders empfindlich für freie Aminogruppen, während die Biuret-Reaktion auf koordinative Wechselwirkungen mit mehreren Peptidbindungen beruht. Deshalb eignen sich beide Methoden für unterschiedliche analytische Fragestellungen.</p></section>
+<h2 id="peptidbindung-peptide-und-sequenzraum">Peptidbindung, Peptide und Sequenzraum</h2>
+<p>Bei der Kondensation zweier Aminosäuren entsteht unter Wasserabspaltung eine Peptidbindung. Die Primärstruktur eines Proteins ist die genetisch codierte Reihenfolge der Aminosäuren. Diese Reihenfolge enthält die Information für höhere Strukturebenen. Der kombinatorische Sequenzraum wächst extrem schnell; bereits für Peptide der Länge <span class="chem">n</span> mit 20 Standardaminosäuren gilt</p>
+<div class="equation"><span class="math-text">N = 20<sup>n</sup>.</span></div>
+<p>Dies erklärt, warum natürliche Evolution und zelluläre Qualitätskontrolle entscheidend sind, um funktionelle Sequenzen aus einem riesigen theoretischen Raum auszuwählen.</p>
+<p>Beispiele biologisch relevanter Peptide sind Süßstoffderivate wie Aspartam oder redoxaktive Systeme wie Glutathion. Für das Glutathionpaar gilt unter oxidativem Stress etwa die Reaktion</p>
+<div class="equation"><span class="math-text">2 GSH + H<sub>2</sub>O<sub>2</sub> → GSSG + 2 H<sub>2</sub>O.</span></div>
+<h2 id="proteinsequenzierung-und-peptidsynthese">Proteinsequenzierung und Peptidsynthese</h2>
+<p>Die Sequenzanalyse umfasst die Identifikation der N-terminalen Aminosäure, die Fragmentierung in überlappende Stücke und die Rekonstruktion der Gesamtsequenz. Klassische Methoden schließen den Edman-Abbau ein, bei dem N-terminale Reste schrittweise als derivatisierte Produkte abgespalten werden. Disulfidbrücken müssen oft zuvor reduziert werden, beispielsweise mit Dithiothreitol (DTT), um die Ketten getrennt analysieren zu können. Moderne Tandem-Massenspektrometrie ermöglicht zusätzlich die präzise Massenbestimmung von Vorläufer- und Fragmentionen.</p>
+<p>Die chemische Peptidsynthese an Festphasen arbeitet häufig mit Fmoc-geschützten Aminosäuren. Nach Kopplung und Entschützung wird der Zyklus iterativ wiederholt, bis die gewünschte Sequenz erreicht ist.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">Proteinprobe</div>
+        <div class="diagram-node">Disulfidreduktion / (z. B. DTT)</div>
+        <div class="diagram-node">Spaltung in / Fragmente</div>
+        <div class="diagram-node">Edman oder MS/MS</div>
+        <div class="diagram-node">Überlappungsanalyse / und Rekonstruktion</div>
+        <div class="diagram-node">validierte / Sequenz</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Schematischer Ablauf einer Proteinsequenzierung.</figcaption>
+    </figure>
+<h2 id="strukturebenen-und-planaritat-der-peptidbindung">Strukturebenen und Planarität der Peptidbindung</h2>
+<p>Proteine werden auf vier Ebenen beschrieben: Primärstruktur (Sequenz), Sekundärstruktur (lokale Faltungsmotive), Tertiärstruktur (Gesamtfaltung einer Kette) und Quartärstruktur (Zusammenlagerung mehrerer Untereinheiten). Die Peptidbindung zeigt aufgrund mesomerer Grenzstrukturen partiellen Doppelbindungscharakter. Dadurch ist sie relativ starr und weitgehend planar, während Rotationen vor allem um die benachbarten Bindungen mit den Torsionswinkeln <span class="chem">φ</span> und <span class="chem">ψ</span> erfolgen.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">vereinfachtes Rückgrat</div>
+        <div class="diagram-node">N</div>
+        <div class="diagram-node">Calpha</div>
+        <div class="diagram-node">C'</div>
+        <div class="diagram-node">Peptidbindung (planar)</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Planare Peptidbindung und frei rotierbare Torsionswinkel des Polypeptidrückgrats.</figcaption>
+    </figure>
+<p>Sterische Hinderung begrenzt die tatsächlich zugänglichen Winkelkombinationen. Diese Einschränkungen werden im Ramachandran-Diagramm als erlaubte und verbotene Bereiche sichtbar und erklären, warum bestimmte Sekundärstrukturen bevorzugt auftreten.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">beta-Bereich</div>
+        <div class="diagram-node">alphaR-Bereich</div>
+        <div class="diagram-node">alphaL selten</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Ramachandran-Prinzip: Nur bestimmte <span class="chem">φ/ψ</span>-Kombinationen sind sterisch erlaubt.</figcaption>
+    </figure>
+<h2 id="sekundarstrukturen-helix-faltblatt-und-turns">Sekundärstrukturen: <span class="chem">α</span>-Helix, <span class="chem">β</span>-Faltblatt und Turns</h2>
+<p>Sekundärstrukturen werden vor allem durch Wasserstoffbrücken des Rückgrats stabilisiert. Die rechtsgängige <span class="chem">α</span>-Helix besitzt typischerweise etwa 3.6 Aminosäurereste pro Windung und eine Ganghöhe von rund 0.54~nm. <span class="chem">β</span>-Faltblätter bestehen aus mehreren <span class="chem">β</span>-Strängen, die parallel oder antiparallel angeordnet sein können. Loops und <span class="chem">β</span>-Turns verbinden diese Motive und ermöglichen kompakte Faltungen.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">alpha-Helix</div>
+        <div class="diagram-node">beta-Faltblatt (antiparallel)</div>
+        <div class="diagram-node">Loop/Turn</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Typische lokale Faltungsmotive von Proteinen (schematisch).</figcaption>
+    </figure>
+<h2 id="denaturierung-renaturierung-und-proteinfaltung">Denaturierung, Renaturierung und Proteinfaltung</h2>
+<p>Die native Konformation ist die funktionelle Struktur eines Proteins unter physiologischen Bedingungen. Denaturierung beschreibt Strukturänderungen auf Sekundär-, Tertiär- oder Quartärstrukturebene mit Funktionsverlust, ausgelöst etwa durch Temperatur, pH-Änderung, organische Lösungsmittel oder mechanische Belastung. Je nach Protein kann der Prozess teilweise reversibel sein, wenn die störenden Bedingungen entfernt werden.</p>
+<p>Die Faltung verläuft nicht als zufällige Suche im gesamten Konformationsraum, sondern entlang energetisch bevorzugter Pfade. Das wird häufig durch das Bild des Faltungstrichters beschrieben: Viele ungeordnete Zustände hoher freier Enthalpie führen zu wenigen stabilen nativen Zuständen niedriger freier Enthalpie. Chaperone und Hitzeschockproteine unterstützen diesen Prozess, verhindern Fehlinteraktionen und fördern Proteostase.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">viele Konformationen</div>
+        <div class="diagram-node">native Konformation</div>
+        <div class="diagram-node">Konformationsvielfalt</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Faltungstrichter-Modell der Proteinfaltung (qualitativ).</figcaption>
+    </figure>
+<p>Fehlfaltung kann zu Aggregaten wie Amyloidfibrillen führen und ist mit Erkrankungen wie Amyloidosen, Alzheimer oder Prionenerkrankungen verknüpft. Bei Prionen induziert eine fehlgefaltete Form die Umlagerung normal gefalteter Proteine und verstärkt dadurch den pathologischen Prozess.</p>
+<h2 id="trennung-und-charakterisierung-von-proteinen">Trennung und Charakterisierung von Proteinen</h2>
+<p>Für die Aufreinigung werden mehrere physikochemische Eigenschaften ausgenutzt, darunter Ladung, Größe, Bindungsspezifität und Dichte. Beim Ein- und Aussalzeffekt verändert Salz die Hydrathülle und damit die Löslichkeit von Proteinen. Die Ionenaustauschchromatographie trennt nach Nettoladung, die Affinitätschromatographie nach spezifischer Wechselwirkung mit einem Liganden und die Gelfiltration nach hydrodynamischer Größe.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">Säule</div>
+        <div class="diagram-node">Stationäre Phase</div>
+        <div class="diagram-node">Probe</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Prinzip einer chromatographischen Trennung mit unterschiedlicher Retention.</figcaption>
+    </figure>
+<p>SDS-PAGE denaturiert Proteine und überführt sie in ein annähernd einheitliches Ladung-zu-Masse-Verhältnis. Dadurch dominiert die Größe als Trennkriterium. Die isoelektrische Fokussierung trennt dagegen nach <span class="chem">pI</span>, indem Proteine im pH-Gradienten bis zu ihrer ladungsneutralen Position wandern. In der 2D-Elektrophorese werden beide Prinzipien kombiniert und liefern eine hochauflösende Proteinlandkarte.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">Schematisches Spotmuster einer 2D-Proteinelektrophorese</div>
+        <div class="diagram-node">funktionelle Verknuepfung</div>
+        <div class="diagram-node">biochemische Konsequenz</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Schematisches Spotmuster einer 2D-Proteinelektrophorese.</figcaption>
+    </figure>
+<p>Ergänzende Methoden wie Dichtegradientenzentrifugation trennen Partikel nach Dichte und Sedimentationsverhalten. Massenspektrometrie liefert hochpräzise Masseninformationen und, in gekoppelten Verfahren, Sequenzhinweise.</p>
+<h2 id="strukturaufklarung-von-proteinen">Strukturaufklärung von Proteinen</h2>
+<p>Die Röntgenkristallographie bestimmt Strukturen über Beugungsmuster geordneter Kristalle und nachfolgende Elektronendichteinterpretation. NMR-Spektroskopie erfasst Strukturinformationen in Lösung und ist besonders wertvoll für Dynamik und lokale Wechselwirkungen. Kryo-Elektronenmikroskopie ermöglicht die hochaufgelöste Strukturrekonstruktion großer Komplexe ohne klassische Kristallisation. Moderne KI-Verfahren wie AlphaFold ergänzen diese experimentellen Ansätze durch leistungsfähige Strukturvorhersage und beschleunigen Hypothesengenerierung sowie experimentelles Design.</p>
+<section class="callout"><h3>Einordnung: Experiment und Vorhersage sind komplementär</h3><p>Strukturvorhersage kann Experimente gezielt leiten, ersetzt sie aber nicht vollständig. Experimentelle Daten bleiben entscheidend für Ligandenbindung, Konformationsdynamik, posttranslationale Modifikationen und komplexe zelluläre Bedingungen.</p></section>
+<h2 id="zusammenfassung-des-zweiten-teils">Zusammenfassung des zweiten Teils</h2>
+<p>Teil 2 verbindet die Chemie einzelner Aminosäuren mit der emergenten Funktion komplexer Proteine. Der zentrale rote Faden ist die Kette <em>Chemie <span class="chem">arrow</span> Sequenz <span class="chem">arrow</span> Struktur <span class="chem">arrow</span> Funktion <span class="chem">arrow</span> Analytik</em>. Aus dieser Perspektive werden sowohl molekulare Mechanismen als auch laborpraktische Methoden konsistent verständlich.</p>
+<!-- deep-dive-generated-start -->
+<section class="deep-dive">
+  <h2 id="vertiefter-erklarteil">Vertiefter Erklärteil</h2>
+  <p>Aminosaeuren sind die chemischen Buchstaben der Proteine. Ihre Seitenketten, Ladungen, Chiralitaet und Reaktionsmoeglichkeiten bestimmen, wie Proteine entstehen, sich falten, erkannt und analytisch getrennt werden.</p>
+  <p class="keyline">Merke: Die Sequenz ist die Primaerinformation eines Proteins, aber die Funktion entsteht erst durch chemische Eigenschaften der Seitenketten, raeumliche Faltung und die Umgebung.</p>
+  <div class="detail-grid">
+      <article class="detail-card">
+        <h3>Grundstruktur und Ladung</h3>
+        <ul>
+          <li>Alle proteinogenen Aminosaeuren besitzen ein alpha-C-Atom mit Aminogruppe, Carboxylgruppe, Wasserstoff und Seitenkette. Nur die Seitenkette unterscheidet die Aminosaeuren funktionell.</li>
+          <li>In Wasser liegen Aminosaeuren haeufig als Zwitterionen vor: Die Aminogruppe ist protoniert, die Carboxylgruppe deprotoniert. Dadurch beeinflusst der pH die Nettoladung sehr stark.</li>
+          <li>Der isoelektrische Punkt ist der pH-Wert mit Nettoladung null. In der Naehe dieses Punktes sinkt die elektrostatische Abstossung, weshalb Proteine leichter aggregieren koennen.</li>
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h3>Stereochemie und Seitenkettenlogik</h3>
+        <ul>
+          <li>Fast alle Aminosaeuren sind chiral. Enzyme unterscheiden diese raeumliche Anordnung sehr streng, weil aktive Zentren dreidimensionale Bindetaschen sind.</li>
+          <li>Unpolare Seitenketten stabilisieren hydrophobe Kerne, polare Seitenketten bilden Wasserstoffbruecken, geladene Seitenketten bilden Salzbruecken und Cystein kann Disulfidbruecken aufbauen.</li>
+          <li>Die chemische Kategorie einer Seitenkette ist oft wichtiger als ihr Name: sauer, basisch, aromatisch, schwefelhaltig, klein oder flexibel liefert direkte Hinweise auf Struktur und Funktion.</li>
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h3>Peptidbindung und Faltung</h3>
+        <ul>
+          <li>Die Peptidbindung entsteht durch Kondensation und besitzt partiellen Doppelbindungscharakter. Deshalb ist sie planar und schraenkt die Beweglichkeit der Proteinkette ein.</li>
+          <li>Frei drehbar sind vor allem die Winkel phi und psi um die benachbarten Bindungen. Das Ramachandran-Prinzip beschreibt, welche Winkelkombinationen sterisch erlaubt sind.</li>
+          <li>Sekundaerstrukturen wie alpha-Helix und beta-Faltblatt werden durch Rueckgrat-Wasserstoffbruecken stabilisiert; Seitenketten entscheiden dann, ob diese Motive in einer konkreten Umgebung stabil bleiben.</li>
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h3>Analytik und Sequenzierung</h3>
+        <ul>
+          <li>Proteintrennung nutzt physikalische Unterschiede: Groesse bei SDS-PAGE, Nettoladung bei isoelektrischer Fokussierung und Bindungseigenschaften bei Chromatographie.</li>
+          <li>Sequenzierung erfordert oft Spaltung in Peptide, Reduktion von Disulfidbruecken und anschliessende Rekonstruktion ueber ueberlappende Fragmente.</li>
+          <li>Massenspektrometrie verbindet Molekularmasse und Fragmentmuster. Dadurch lassen sich Sequenzen, Modifikationen und Proteinidentitaeten sehr empfindlich bestimmen.</li>
+        </ul>
+      </article>
+  </div>
+  <section class="callout exam-box">
+    <h3>Prüfungsfokus und aktive Wiederholung</h3>
+    <ul>
+      <li>Berechne qualitativ die Nettoladung einer Aminosaeure bei niedrigem, neutralem und hohem pH.</li>
+      <li>Erklaere, warum die Peptidbindung planar ist und welche Konsequenz das fuer Proteinstruktur hat.</li>
+      <li>Vergleiche SDS-PAGE, isoelektrische Fokussierung und 2D-Elektrophorese nach Trennprinzip.</li>
+    </ul>
+  </section>
+</section>
+<!-- deep-dive-generated-end -->
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teil 1 Grundlagen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="readme-doc-style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <h1>Teil 1 Grundlagen</h1>
+      <div class="meta">Ausführliches browserlesbares Lernskript mit erklärenden HTML-Diagrammen</div>
+    </header>
+    <section class="content">
+<!-- toc-generated-start -->
+<nav class="toc" aria-label="Kapitelinhalt">
+  <strong>Kapitelinhalt</strong>
+  <ol>
+    <li><a href="#einfuhrung-in-die-biochemie">Einführung in die Biochemie</a></li>
+    <li><a href="#was-ist-leben">Was ist Leben?</a></li>
+    <li><a href="#entstehung-von-biomolekulen-stoffwechsel-und-leben">Entstehung von Biomolekülen, Stoffwechsel und Leben</a></li>
+    <li><a href="#zellen-als-fundamentale-einheit-des-lebens">Zellen als fundamentale Einheit des Lebens</a></li>
+    <li><a href="#elementare-und-molekulare-zusammensetzung-des-lebens">Elementare und molekulare Zusammensetzung des Lebens</a></li>
+    <li><a href="#wasser-als-grundlage-allen-lebens">Wasser als Grundlage allen Lebens</a></li>
+    <li><a href="#osmose-osmolaritat-und-dialyse">Osmose, Osmolarität und Dialyse</a></li>
+    <li><a href="#dissoziation-von-wasser-sauren-basen-und-ph">Dissoziation von Wasser, Säuren, Basen und pH</a></li>
+    <li><a href="#zusammenfassung-des-grundlagenblocks">Zusammenfassung des Grundlagenblocks</a></li>
+    <li><a href="#vertiefter-erklarteil">Vertiefter Erklärteil</a></li>
+  </ol>
+</nav>
+<!-- toc-generated-end -->
+<h1>Teil 1 Grundlagen</h1>
+<h2 id="einfuhrung-in-die-biochemie">Einführung in die Biochemie</h2>
+<p>Die Vorlesung <em>Einführung in die Biochemie</em> (MOL.306 UB) behandelt die Frage, wie chemische Prozesse das Leben aufbauen, erhalten und verändern. Biochemie ist die Lehre von chemischen Vorgängen in Lebewesen und zugleich eine Grenzwissenschaft zwischen Chemie, Biologie und Medizin. Ihr Gegenstand ist einerseits die Zusammensetzung lebender Systeme durch Biomoleküle wie Proteine, Nukleinsäuren, Lipide und Zucker, andererseits die Dynamik dieser Moleküle in Reaktionsnetzwerken, Signalwegen und Regulationsprozessen. Historisch reicht das Fach bis in frühe Laborarbeiten des 19. Jahrhunderts zurück, etwa zur Isolierung von Hämoglobin (1861) und Nukleinsäuren (1869).</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">Chemie</div>
+        <div class="diagram-node">Biologie</div>
+        <div class="diagram-node">Medizin</div>
+        <div class="diagram-node">Biochemie</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Biochemie als Überlappung von Chemie, Biologie und Medizin (schematisch).</figcaption>
+    </figure>
+<p>Der weitere Kurs umfasst Grundlagen zu Zellen, Bioelementen und Biomolekülen, Wasser sowie Säure-Base-Chemie und Pufferung. Darauf folgen Aminosäuren und Proteine, Enzymkatalyse, Kohlenhydrate und ihr Stoffwechsel, Lipide und Membranen, Zellatmung, Aminosäure- und Porphyrinstoffwechsel sowie Photosynthese. Die Grundlagen aus diesem ersten Teil sind damit das methodische Fundament für alle folgenden Kapitel.</p>
+<h2 id="was-ist-leben">Was ist Leben?</h2>
+<p>Eine prägnante Formulierung lautet: Leben ist das, was sich aktiv gegen den Zerfall zur Unordnung wehrt. Gemeint ist damit kein statischer Zustand, sondern ein fortlaufender Prozess aus Energieumsatz, Strukturaufbau und Selbstorganisation. Ein lebendes System ist gegenüber der Umgebung abgegrenzt, tauscht aber dennoch Materie und Energie mit ihr aus und ist deshalb ein offenes System. Es speichert Information, kann diese Information replizieren, wächst, entwickelt sich, differenziert sich, reagiert auf Reize und passt sich über evolutionäre Zeiträume an.</p>
+<section class="callout"><h3>Einordnung: Die Virus-Frage</h3><p>Viren besitzen genetische Information und evolvieren, haben aber keinen eigenständigen Stoffwechsel außerhalb einer Wirtszelle. Ob sie als lebendig gelten, hängt deshalb vom gewählten Lebensbegriff ab. In einer strikt zellbasierten Definition gelten sie als nicht lebendig, in informationsbasierten Definitionen können sie als Grenzfall betrachtet werden.</p></section>
+<h2 id="entstehung-von-biomolekulen-stoffwechsel-und-leben">Entstehung von Biomolekülen, Stoffwechsel und Leben</h2>
+<p>Modelle zur Lebensentstehung beginnen meist mit den drei notwendigen Zutaten Energie, organischen Vorläufermolekülen und Wasser. Chemische Evolution beschreibt den Übergang von einfachen organischen Ausgangsverbindungen zu komplexeren Molekülen durch Reaktionen und Polymerisierung. Entscheidend ist dabei, dass aus reaktiven Bausteinen schrittweise stabile, funktionale Strukturen entstehen, die schließlich Information speichern und Reaktionen katalysieren können.</p>
+<p>Mehrere Hypothesen erklären unterschiedliche Teilaspekte. Die Ursuppen-Hypothese nimmt eine präbiotische Atmosphäre an, in der unter Energieeintrag einfache organische Moleküle entstehen. Das klassische Miller-Urey-Experiment zeigte die Bildung von Aminosäuren aus Methan, Ammoniak und Wasser unter elektrischer Entladung. Die Hydrothermalquellen-Hypothese verlagert den Entstehungsort an mineralreiche Zonen am Meeresboden mit starken Energie- und Temperaturgradienten. Die Panspermie-Hypothese nimmt einen extraterrestrischen Eintrag organischer Vorstufen an und beantwortet damit eher den Transport als den Ursprung selbst. Die Lipidwelt- oder Protocell-Hypothese erklärt frühe Kompartimentierung durch spontane Vesikelbildung, lässt aber ohne zusätzlichen Informationsmechanismus die Vererbung offen. Die RNA-Welt-Hypothese kombiniert Information und Katalyse in einem Molekültyp, steht aber vor dem Problem präbiotischer Stabilität und Synthese längerer RNA. Stoffwechsel-zuerst-Modelle sehen nichtenzymatische Reaktionsnetze als Ausgangspunkt biologischer Organisation.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">Energiequellen / (Licht, Geochemie)</div>
+        <div class="diagram-node">Organische / Vorläufer</div>
+        <div class="diagram-node">Wasser als / Reaktionsmedium</div>
+        <div class="diagram-node">Polymerisierung / und Netzwerke</div>
+        <div class="diagram-node">Kompartimentierung / (Vesikel/Poren)</div>
+        <div class="diagram-node">Information / (RNA-Modelle)</div>
+        <div class="diagram-node">Protometabolismus / (nichtenzymatisch)</div>
+        <div class="diagram-node">Frühe Zelle mit / gekoppeltem Informations- / und Stoffwechselprozess</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Schematische Zusammenführung zentraler Hypothesen zur Lebensentstehung.</figcaption>
+    </figure>
+<section class="callout"><h3>Warum Kompartimentierung zentral ist</h3><p>Erst räumliche Abgrenzung erlaubt stabile Konzentrationsunterschiede, selektiven Stoffaustausch und die Kopplung endergoner mit exergonen Reaktionen. Ohne Kompartimentierung würde jede lokale chemische Ordnung schnell durch Diffusion nivelliert.</p></section>
+<h2 id="zellen-als-fundamentale-einheit-des-lebens">Zellen als fundamentale Einheit des Lebens</h2>
+<p>Die Zelle ist die kleinste Einheit, die alle Merkmale des Lebens in integrierter Form trägt. Prokaryotische Zellen wie Bakterien und Archaeen sind typischerweise etwa 1~<span class="chem">µ</span>m groß und besitzen keine membranumhüllten Organellen. Eukaryotische Zellen sind größer, intern stärker kompartimentiert und in tierischer sowie pflanzlicher Organisation ausgeprägt. Pflanzliche Zellen liegen häufig im Bereich von 50 bis 100~<span class="chem">µ</span>m. Diese Größenunterschiede sind funktionell relevant, weil Diffusionswege, Oberfläche-Volumen-Verhältnis und Reaktionsräume direkt von der Skala abhängen.</p>
+<p>Die Darstellung des phylogenetischen Baums mit einem universellen gemeinsamen Ursprung (Urgenot/LUCA-Idee) betont, dass heutige Vielfalt auf gemeinsame frühe Zelllinien zurückgeht. Die strukturelle Hierarchie reicht von Atomen über Moleküle und Makromoleküle zu Organellen, Zellen, Geweben und Organismen.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">kleines Molekül</div>
+        <div class="diagram-node">~ 1 nm</div>
+        <div class="diagram-node">Protein</div>
+        <div class="diagram-node">~ 5--10 nm</div>
+        <div class="diagram-node">Virus</div>
+        <div class="diagram-node">~ 100 nm</div>
+        <div class="diagram-node">Prokaryot</div>
+        <div class="diagram-node">~ 1</div>
+        <div class="diagram-node">Eukaryotische Zelle</div>
+        <div class="diagram-node">~ 10--100</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Molekulare und zelluläre Größenordnungen (schematisch, nicht maßstabsgetreu).</figcaption>
+    </figure>
+<p>Für die Masse biologischer Strukturen ist das Dalton (Da) eine zentrale Einheit. Ein Dalton entspricht näherungsweise der Masse eines Wasserstoffatoms. Diese Einheit ist besonders nützlich, um Proteine, Nukleinsäuren und komplexe Baugruppen konsistent zu vergleichen.</p>
+<h2 id="elementare-und-molekulare-zusammensetzung-des-lebens">Elementare und molekulare Zusammensetzung des Lebens</h2>
+<p>Die chemischen Grundlagen lebender Systeme werden durch Mengen- und Spurenelemente bestimmt. Wasserstoff, Sauerstoff, Stickstoff und Kohlenstoff machen zusammen den größten Teil der Zellmasse aus und bilden das strukturelle Gerüst organischer Moleküle. Die Aussage ``What is true of <em>E. coli</em> is true of the elephant.'' verdeutlicht, dass trotz enormer Größenunterschiede viele chemische Prinzipien universell sind.</p>
+<p>Die elementare Zusammensetzung des Menschen wird häufig stark vereinfacht als Verhältnis von Sauerstoff, Kohlenstoff und Wasserstoff dargestellt. Ergänzend sind Stickstoff, Phosphor, Schwefel sowie Ionen wie Natrium, Kalium, Calcium, Magnesium und Chlorid für Struktur, Ladungsbilanz und Signalübertragung entscheidend. Auf molekularer Ebene dominieren Wasser, Proteine, Lipide, Kohlenhydrate und Nukleinsäuren in unterschiedlichen Anteilen je nach Zelltyp.</p>
+<h2 id="wasser-als-grundlage-allen-lebens">Wasser als Grundlage allen Lebens</h2>
+<p>Wasser bestimmt als Lösungsmittel, Reaktionspartner und Wärmepuffer die Biochemie auf jeder Ebene. Seine gewinkelte Molekülgeometrie und die hohe Elektronegativität des Sauerstoffatoms erzeugen eine permanente Polarität mit partiell negativer Ladung am Sauerstoff und partiell positiven Ladungen an den Wasserstoffatomen. Daraus entstehen Wasserstoffbrücken zwischen benachbarten Molekülen.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">O</div>
+        <div class="diagram-node">H</div>
+        <div class="diagram-node">delta-</div>
+        <div class="diagram-node">delta+</div>
+        <div class="diagram-node">Wasserstoffbrücke</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Polarität von Wasser und Bildung einer Wasserstoffbrücke (schematisch).</figcaption>
+    </figure>
+<p>Im flüssigen Zustand entsteht ein dynamisches Netzwerk aus Wasserstoffbrücken, das fortlaufend aufbricht und neu gebildet wird. Dieses Netzwerk erklärt Kohäsion, Oberflächenspannung und die hohe Wärmekapazität. Adhäsion beschreibt zusätzlich die Wechselwirkung von Wasser mit Grenzflächen, etwa mit geladenen oder polaren Oberflächen in biologischen Systemen.</p>
+<p>Die Dichteanomalie des Wassers ist biochemisch und ökologisch besonders bedeutsam. Wasser besitzt bei 4~°C die höchste Dichte. Unterhalb dieser Temperatur führt zunehmende Netzwerkordnung zu Volumenzunahme, sodass Eis eine geringere Dichte als flüssiges Wasser hat und aufschwimmt. Dadurch frieren Gewässer von oben nach unten und bilden eine isolierende Eisdecke statt vollständig zu erstarren.</p>
+<section class="callout"><h3>Einordnung: Warum die Dichteanomalie biologisch relevant ist</h3><p>Würde Eis sinken, könnten Seen in kalten Wintern bis zum Grund durchfrieren. Das würde aquatische Ökosysteme drastisch destabilisieren. Die Anomalie des Wassers ist deshalb eine physikalische Voraussetzung für viele stabile Lebensräume.</p></section>
+<p>Wasserstoffbrücken treten in vielen funktionellen Gruppen auf, etwa zwischen Hydroxyl-, Amino-, Carbonyl- und Ether-Sauerstoffgruppen. In Makromolekülen stabilisieren sie Sekundärstrukturen von Proteinen und Basenpaarungen in Nukleinsäuren. Die Solvatisierung von Ionen entsteht durch die Ausrichtung von Wasserdipolen um geladene Teilchen. Polare oder ionische Stoffe lösen sich deshalb meist gut in Wasser, während unpolare Stoffe schlecht löslich sind.</p>
+<p>Der hydrophobe Effekt bedeutet nicht, dass unpolare Moleküle sich gegenseitig stark anziehen, sondern dass ihre Aggregation die Ordnung des umgebenden Wassers verringert und damit die Entropie des Gesamtsystems erhöht. Amphipathische Moleküle können daraus geordnete Strukturen wie Mizellen bilden, bei denen die hydrophilen Köpfe nach außen und die hydrophoben Ketten nach innen orientiert sind.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">hydrophober Kern</div>
+        <div class="diagram-node">Mizelle: Kopfgruppen außen, Kohlenwasserstoffketten innen</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Schematische Mizellenbildung aus amphipathischen Molekülen.</figcaption>
+    </figure>
+<p>Kolligative Eigenschaften hängen von der Anzahl gelöster Teilchen ab und nicht von deren chemischer Identität. Dazu gehören Siedepunktserhöhung, Schmelzpunkterniedrigung, Dampfdruckerniedrigung und osmotischer Druck. Das Phasendiagramm von Wasser fasst die Zustandsbereiche in Abhängigkeit von Temperatur und Druck zusammen und erklärt, unter welchen Bedingungen festes, flüssiges oder gasförmiges Wasser stabil ist.</p>
+<h2 id="osmose-osmolaritat-und-dialyse">Osmose, Osmolarität und Dialyse</h2>
+<p>Osmose beschreibt den Nettofluss von Wasser durch eine semipermeable Membran entlang eines Wasserpotenzial- bzw. Konzentrationsgefälles gelöster Stoffe. Der osmotische Druck ist der Gegendrück, der nötig wäre, um diesen Fluss zu stoppen. Für verdünnte Lösungen gilt näherungsweise die van-'t-Hoff-Beziehung</p>
+<div class="equation"><span class="math-text">Π = i c R T,</span></div>
+<p>worin <span class="chem">Π</span> den osmotischen Druck, <span class="chem">i</span> den van-'t-Hoff-Faktor, <span class="chem">c</span> die Stoffmengenkonzentration, <span class="chem">R</span> die Gaskonstante und <span class="chem">T</span> die absolute Temperatur bezeichnet.</p>
+<figure class="figure">
+      <div class="html-diagram">
+        <div class="diagram-title">Schematische Übersicht</div>
+        <div class="diagram-flow">
+        <div class="diagram-node">semipermeable Membran</div>
+        <div class="diagram-node">niedrigere Osmolarität</div>
+        <div class="diagram-node">höhere Osmolarität</div>
+        <div class="diagram-node">Wasserfluss zur stärker konzentrierten Seite</div>
+        </div>
+        <p class="diagram-note">Leserichtung: Die Pfeile markieren eine Reaktionsfolge, Ursache-Wirkung-Beziehung oder funktionelle Kopplung.</p>
+      </div>
+      <figcaption>Osmose durch eine semipermeable Membran (schematisch).</figcaption>
+    </figure>
+<p>Die Osmolarität gibt die Gesamtzahl osmotisch wirksamer Teilchen pro Liter Lösung an. Sie ist deshalb für den Wasserhaushalt von Zellen wichtiger als die bloße Molarität eines einzelnen Stoffes. Änderungen des osmotischen Drucks können Zellvolumen und Membranspannung stark beeinflussen.</p>
+<p>Dialyse nutzt unterschiedliche Permeabilität einer Membran für kleine und große Teilchen. Kleine gelöste Stoffe diffundieren entlang des Konzentrationsgefälles, während große Makromoleküle zurückgehalten werden. In der Hämodialyse wird dieses Prinzip technisch eingesetzt, um bei Niereninsuffizienz harnpflichtige Substanzen, überschüssige Ionen und Wasser aus dem Blut zu entfernen.</p>
+<h2 id="dissoziation-von-wasser-sauren-basen-und-ph">Dissoziation von Wasser, Säuren, Basen und pH</h2>
+<p>Wasser dissoziiert in geringem Ausmaß in Protonen und Hydroxidionen. Formal schreibt man</p>
+<div class="equation"><span class="math-text">H<sub>2</sub>O ⇌ H<sup>+</sup> + OH<sup>-</sup>,</span></div>
+<p>praktisch liegt das Proton in wässriger Lösung als Hydronium und hydratisierte Protonencluster vor. Der Protonentransport erfolgt dabei oft über Protonensprünge entlang von Wasserstoffbrücken (Grotthuss-Mechanismus), was die hohe Beweglichkeit von Protonen in Wasser erklärt.</p>
+<p>Für das Ionenprodukt des Wassers gilt</p>
+<div class="equation"><span class="math-text">K<sub>w</sub> = [H<sup>+</sup>][OH<sup>-</sup>] ≈ 10<sup>-14</sup> (bei 25°C).</span></div>
+<p>Bei neutralem pH sind die Konzentrationen von <span class="chem">H<sup>+</sup></span> und <span class="chem">OH<sup>-</sup></span> gleich groß. Der pH-Wert ist definiert als</p>
+<div class="equation"><span class="math-text">pH = -log<sub>10</sub>[H<sup>+</sup>].</span></div>
+<p>Die Säurekonstante <span class="chem">K<sub>a</sub></span> beziehungsweise <span class="chem">pK<sub>a</sub></span> charakterisiert die Stärke einer Säure und damit ihre Protonenabgabeneigung.</p>
+<p>Biologische Puffer bestehen aus einer schwachen Säure und ihrer konjugierten Base. Für den Zusammenhang von pH, <span class="chem">pK<sub>a</sub></span> und Konzentrationsverhältnis gilt die Henderson-Hasselbalch-Gleichung</p>
+<div class="equation"><span class="math-text">pH = pK<sub>a</sub> + log<sub>10</sub>([A<sup>-</sup>] / [HA]).</span></div>
+<p>Das wichtigste Puffersystem des Blutes ist das Kohlensäure-Hydrogencarbonat-System. Über die Atmung koppelt es den CO<sub>2</sub>-Partialdruck an den pH-Wert.</p>
+<section class="callout"><h3>Klinischer Bezug: Hyperventilation und Hypoventilation</h3><p>Bei Hyperventilation wird CO<sub>2</sub> verstärkt abgeatmet, die Konzentration von Kohlensäure sinkt und der Blut-pH steigt in Richtung Alkalose. Bei Hypoventilation verbleibt mehr CO<sub>2</sub> im Blut, was die Protonenkonzentration erhöht und zu respiratorischer Azidose führen kann. Typische Auslöser sind bei Hyperventilation unter anderem Stress und Angst, bei Hypoventilation beispielsweise COPD, opioidbedingte Atemdepression oder Schlafapnoe.</p></section>
+<h2 id="zusammenfassung-des-grundlagenblocks">Zusammenfassung des Grundlagenblocks</h2>
+<p>Der Grundlagenblock verbindet die Entstehungsperspektive des Lebens mit zellulärer Organisation, chemischer Zusammensetzung und den physikochemischen Besonderheiten des Wassers. Die Kernaussage ist, dass biologische Funktion aus gekoppelten Prinzipien entsteht: aus Kompartimentierung, Reaktionsnetzwerken, Informationsspeicherung und kontrolliertem Stoff- sowie Energiefluss. Auf dieser Basis werden in den folgenden Kursteilen Enzymkatalyse und Stoffwechselwege quantitativ und mechanistisch verständlich.</p>
+<!-- deep-dive-generated-start -->
+<section class="deep-dive">
+  <h2 id="vertiefter-erklarteil">Vertiefter Erklärteil</h2>
+  <p>Dieses Kapitel ist das Fundament fuer alle spaeteren Stoffwechsel- und Molekularbiologie-Themen. Entscheidend ist, dass Biochemie nicht nur Molekuele aufzahlt, sondern erklaert, wie Struktur, Energiefluss, Information und Regulation zusammen Leben erzeugen.</p>
+  <p class="keyline">Merke: Leben ist kein Stoff, sondern ein stabilisierter Prozess. Zellen bleiben geordnet, weil sie Energie aufnehmen, Stoffe austauschen, Information speichern und ihre inneren Reaktionen raeumlich organisieren.</p>
+  <div class="detail-grid">
+      <article class="detail-card">
+        <h3>Biochemie als Verbindung der Ebenen</h3>
+        <ul>
+          <li>Auf chemischer Ebene werden Bindungen, Ladungen, pH-Werte, Loeslichkeit und Reaktionsenergien betrachtet. Diese Eigenschaften bestimmen, ob Molekuele miteinander reagieren, sich falten oder Membranen bilden.</li>
+          <li>Auf biologischer Ebene werden dieselben Molekuele in Zellen, Organellen und Geweben eingeordnet. Ein Protein ist also nicht nur eine Kette aus Aminosaeuren, sondern ein funktioneller Baustein in einem regulierten System.</li>
+          <li>Auf medizinischer Ebene wird sichtbar, dass kleine chemische Veraenderungen grosse Folgen haben koennen: pH-Verschiebungen, Enzymdefekte, Membranstoerungen oder Transportprobleme fuehren zu messbaren Krankheitsbildern.</li>
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h3>Warum Kompartimentierung Leben ermoeglicht</h3>
+        <ul>
+          <li>Kompartimente schaffen Innen- und Aussenraeume. Dadurch koennen Konzentrationsunterschiede entstehen, die als Triebkraefte fuer Transport, Osmose und Energieumwandlung dienen.</li>
+          <li>Eine Membran erlaubt selektiven Austausch: Kleine oder passende Molekuele koennen passieren, andere werden zurueckgehalten. So bleibt die chemische Identitaet einer Zelle erhalten.</li>
+          <li>Ohne Kompartimentierung wuerden Reaktionspartner zu stark verduennt, Produkte wegdiffundieren und gekoppelte Reaktionen nicht effizient ablaufen.</li>
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h3>Wasser als chemische Arbeitsumgebung</h3>
+        <ul>
+          <li>Wasser ist polar und bildet Wasserstoffbruecken. Deshalb loest es Ionen und polare Molekuele gut, stabilisiert geladene Zwischenzustande und beeinflusst die Faltung von Makromolekuelen.</li>
+          <li>Der hydrophobe Effekt ist eine Folge der Wasserstruktur: Unpolare Gruppen lagern sich zusammen, weil dadurch geordnetes Wasser an ihren Oberflaechen frei wird und die Entropie steigt.</li>
+          <li>Osmose entsteht, weil Wasser dorthin wandert, wo mehr osmotisch wirksame Teilchen vorliegen. Fuer Zellen ist deshalb Osmolaritaet oft wichtiger als die reine Konzentration eines einzelnen Stoffes.</li>
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h3>Saeure-Base-Chemie als Regulationsprinzip</h3>
+        <ul>
+          <li>Der pH-Wert beschreibt die Protonenaktivitaet. Da viele Seitenketten von Proteinen protonierbar sind, veraendert der pH Ladungen, Bindungen und Enzymaktivitaet.</li>
+          <li>Puffer stabilisieren den pH, weil eine schwache Saeure Protonen abgeben und ihre konjugierte Base Protonen aufnehmen kann. Maximale Pufferwirkung liegt nahe am pKa-Wert.</li>
+          <li>Das Hydrogencarbonat-System verbindet Chemie mit Atmung: Mehr CO2 beguenstigt Saeurebildung, weniger CO2 verschiebt den pH in alkalische Richtung.</li>
+        </ul>
+      </article>
+  </div>
+  <section class="callout exam-box">
+    <h3>Prüfungsfokus und aktive Wiederholung</h3>
+    <ul>
+      <li>Erklaere den Unterschied zwischen offenem System und abgeschlossenem System am Beispiel einer Zelle.</li>
+      <li>Leite her, warum Membranen, pH-Puffer und Wasserstoffbruecken in fast jedem spaeteren Kapitel wieder auftauchen.</li>
+      <li>Unterscheide Molaritaet, Osmolaritaet und osmotischen Druck mit einem biologischen Beispiel.</li>
+    </ul>
+  </section>
+</section>
+<!-- deep-dive-generated-end -->
+    </section>
+  </main>
+</body>
+</html>
