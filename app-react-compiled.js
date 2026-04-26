@@ -116,9 +116,12 @@ const touchStudyDay = (root) => {
   g.streak = computeStreakFromDays(g.studyDays);
 };
 const computeStreak = (root) => computeStreakFromDays(root?.[GLOBAL_KEY]?.studyDays || []);
+const getTheoryItems = (course) => course?.scriptPdfs || course?.theory || [];
+const getTheoryModeLabel = (course) => course?.scriptPdfs ? "Skript" : "Theorie";
+const getTheoryModeDescription = (course) => course?.scriptPdfs ? "PDF-Skripte lesen" : "Erklärungen lesen";
 const findTheorySectionIdx = (course, topicId) => {
   if (topicId == null) return -1;
-  const list = course.theory || [];
+  const list = getTheoryItems(course);
   return list.findIndex((t) => t.id === topicId);
 };
 const shuffleIndices = (n) => {
@@ -190,7 +193,7 @@ const calcCompletion = (course, p) => {
   const fcT = (course.kk || []).length;
   const fbT = (course.lt || []).length;
   const mcT = (course.mc || []).length;
-  const thT = (course.theory || []).filter((t) => !t.hidden).length;
+  const thT = getTheoryItems(course).filter((t) => !t.hidden).length;
   const pwT = (course.pathways || []).length;
   const fc = fcT ? Math.min((p.fc?.length ?? 0) / fcT, 1) : 0;
   const fb = fbT ? Math.min((p.fb?.length ?? 0) / fbT, 1) : 0;
@@ -586,15 +589,15 @@ function ModesScreen({ course, th, progress, onMode, onBack, onProgress }) {
     { id: "flashcards-sr", icon: /* @__PURE__ */ React.createElement(IcoFlash, null), label: "Karteikarten (Wiederholung)", desc: "Abstandswiederholung", color: "#A66C1E", count: "SR", pct: Math.min(1, Object.keys(p?.sr || {}).length / Math.max(1, (course.kk || []).length) * 0.5) },
     { id: "fillblanks", icon: /* @__PURE__ */ React.createElement(IcoFill, null), label: "L\xFCckentext", desc: "L\xFCcken ausf\xFCllen", color: "#4A7C59", count: `${p?.fb?.length || 0}/${(course.lt || []).length}`, pct: comp.fb },
     { id: "mc", icon: /* @__PURE__ */ React.createElement(IcoMC, null), label: "Multiple Choice", desc: "Auswahlfragen", color: ACCENT, count: p?.mc?.attempts ? `Best ${p.mc.best}/${(course.mc || []).length}` : `${(course.mc || []).length} Fragen`, pct: comp.mc },
-    { id: "theory-index", icon: /* @__PURE__ */ React.createElement(IcoBook, null), label: "Theorie", desc: "Erkl\xE4rungen lesen", color: "#8C3A5A", count: `${p?.th?.length || 0}/${(course.theory || []).filter((t) => !t.hidden).length}`, pct: comp.th },
+    { id: "theory-index", icon: /* @__PURE__ */ React.createElement(IcoBook, null), label: getTheoryModeLabel(course), desc: getTheoryModeDescription(course), color: "#8C3A5A", count: `${p?.th?.length || 0}/${getTheoryItems(course).filter((t) => !t.hidden).length}`, pct: comp.th },
     ...(course.pathways || []).length ? [{ id: "pathways", icon: /* @__PURE__ */ React.createElement(IcoBook, null), label: "Stoffwechselwege", desc: "Zuordnen & freie Eingabe (S1 + S2)", color: PW_COLOR, count: comp.pw >= 0.999 ? "\u2713" : `${Math.round(comp.pw * 100)}%`, pct: comp.pw }] : [],
-    ...(courseSupportsKkMcMix(course) ? [{ id: "kk-mc-mix", icon: /* @__PURE__ */ React.createElement(IcoMix, null), label: "Mix: Karten & MC", desc: "Karten und Fragen in zuf\xE4lliger Reihenfolge", color: MIX_COLOR, count: `${(course.kk || []).length} KK + ${(course.mc || []).length} MC`, pct: (comp.fc + comp.mc) / 2 }] : [])
+    ...(courseSupportsKkMcMix(course) ? [{ id: "kk-mc-mix", icon: /* @__PURE__ */ React.createElement(IcoMix, null), label: "Gemischt", desc: "Karten und Fragen in zuf\xE4lliger Reihenfolge", color: MIX_COLOR, count: `${(course.kk || []).length} KK + ${(course.mc || []).length} MC`, pct: (comp.fc + comp.mc) / 2 }] : [])
   ].filter((m) => {
     if (m.id === "flashcards" && !(course.kk || []).length) return false;
     if (m.id === "flashcards-sr" && !(course.kk || []).length) return false;
     if (m.id === "fillblanks" && !(course.lt || []).length) return false;
     if (m.id === "mc" && !(course.mc || []).length) return false;
-    if (m.id === "theory-index" && !(course.theory || []).length) return false;
+    if (m.id === "theory-index" && !getTheoryItems(course).length) return false;
     if (m.id === "kk-mc-mix" && !courseSupportsKkMcMix(course)) return false;
     return true;
   });
@@ -1465,9 +1468,9 @@ function KkMcMixScreen({ course, th, progress, updateProgress, onBack, onOpenThe
     return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", height: "100%" }, dangerouslySetInnerHTML: { __html: html } });
   };
   if (!kkLen || !mcLen) {
-    return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", height: "100%", background: th.bg, display: "flex", flexDirection: "column" } }, /* @__PURE__ */ React.createElement(TopBar, { label: "Mix", backLabel: course.name, onBack, th }), /* @__PURE__ */ React.createElement("div", { style: { flex: 1, display: "flex", alignItems: "center", justifyContent: "center" } }, /* @__PURE__ */ React.createElement("p", { style: { color: th.subtext, fontSize: 14 } }, "F\xFCr den Mix-Modus werden Karteikarten und MC-Eintr\xE4ge ben\xF6tigt.")));
+    return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", height: "100%", background: th.bg, display: "flex", flexDirection: "column" } }, /* @__PURE__ */ React.createElement(TopBar, { label: "Gemischt", backLabel: course.name, onBack, th }), /* @__PURE__ */ React.createElement("div", { style: { flex: 1, display: "flex", alignItems: "center", justifyContent: "center" } }, /* @__PURE__ */ React.createElement("p", { style: { color: th.subtext, fontSize: 14 } }, "F\xFCr den Mix-Modus werden Karteikarten und MC-Eintr\xE4ge ben\xF6tigt.")));
   }
-  return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", height: "100%", background: th.bg, fontFamily: "'DM Sans',sans-serif", display: "flex", flexDirection: "column" } }, /* @__PURE__ */ React.createElement(TopBar, { label: "Mix: Karten & MC", backLabel: course.name, onBack, th }), /* @__PURE__ */ React.createElement("div", { style: { padding: compact ? "8px 16px 10px" : "10px 24px 14px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", marginBottom: 7 } }, /* @__PURE__ */ React.createElement("span", { style: { fontSize: 12, color: th.subtext } }, done ? "Runde fertig" : `Schritt ${pos + 1} von ${totalSteps}`)), /* @__PURE__ */ React.createElement("div", { style: { height: 3, background: th.surface, borderRadius: 2 } }, /* @__PURE__ */ React.createElement("div", { style: { width: `${done ? 100 : totalSteps ? pos / totalSteps * 100 : 0}%`, height: "100%", background: MIX_COLOR, borderRadius: 2, transition: "width 0.3s" } })), /* @__PURE__ */ React.createElement("div", { ref: cardRef, style: { flex: 1, padding: compact ? "0 16px 16px" : "0 24px 24px", overflowY: "auto", minHeight: 0 } }, done ? /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 280, gap: 14 }, className: "anim-pop" }, /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Playfair Display',serif", fontSize: 22, color: th.text, fontWeight: 500, textAlign: "center" } }, "Runde geschafft!"), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 14, color: th.subtext, textAlign: "center" } }, "MC-Aufgaben in dieser Runde richtig: ", mcCorrectRef.current, " / ", mcLen), /* @__PURE__ */ React.createElement("button", { type: "button", onClick: () => setRoundKey((k) => k + 1), style: { marginTop: 8, padding: "11px 28px", background: MIX_COLOR, color: "#FFF", border: "none", borderRadius: 10, fontSize: 15, fontWeight: 500, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" } }, "Neue Mischung")) : kkCard ? /* @__PURE__ */ React.createElement("div", { key: `kk-${pos}` }, /* @__PURE__ */ React.createElement("div", { className: "flip-card", role: "button", tabIndex: 0, onClick: () => setFlipped((f) => !f), onKeyDown: (e) => {
+  return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", height: "100%", background: th.bg, fontFamily: "'DM Sans',sans-serif", display: "flex", flexDirection: "column" } }, /* @__PURE__ */ React.createElement(TopBar, { label: "Gemischt", backLabel: course.name, onBack, th }), /* @__PURE__ */ React.createElement("div", { style: { padding: compact ? "8px 16px 10px" : "10px 24px 14px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", marginBottom: 7 } }, /* @__PURE__ */ React.createElement("span", { style: { fontSize: 12, color: th.subtext } }, done ? "Runde fertig" : `Schritt ${pos + 1} von ${totalSteps}`)), /* @__PURE__ */ React.createElement("div", { style: { height: 3, background: th.surface, borderRadius: 2 } }, /* @__PURE__ */ React.createElement("div", { style: { width: `${done ? 100 : totalSteps ? pos / totalSteps * 100 : 0}%`, height: "100%", background: MIX_COLOR, borderRadius: 2, transition: "width 0.3s" } })), /* @__PURE__ */ React.createElement("div", { ref: cardRef, style: { flex: 1, padding: compact ? "0 16px 16px" : "0 24px 24px", overflowY: "auto", minHeight: 0 } }, done ? /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 280, gap: 14 }, className: "anim-pop" }, /* @__PURE__ */ React.createElement("p", { style: { fontFamily: "'Playfair Display',serif", fontSize: 22, color: th.text, fontWeight: 500, textAlign: "center" } }, "Runde geschafft!"), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 14, color: th.subtext, textAlign: "center" } }, "MC-Aufgaben in dieser Runde richtig: ", mcCorrectRef.current, " / ", mcLen), /* @__PURE__ */ React.createElement("button", { type: "button", onClick: () => setRoundKey((k) => k + 1), style: { marginTop: 8, padding: "11px 28px", background: MIX_COLOR, color: "#FFF", border: "none", borderRadius: 10, fontSize: 15, fontWeight: 500, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" } }, "Neue Mischung")) : kkCard ? /* @__PURE__ */ React.createElement("div", { key: `kk-${pos}` }, /* @__PURE__ */ React.createElement("div", { className: "flip-card", role: "button", tabIndex: 0, onClick: () => setFlipped((f) => !f), onKeyDown: (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       setFlipped((f) => !f);
@@ -1639,8 +1642,8 @@ function TheoryIndexScreen({ course, th, progress, onSection, onBack }) {
   const thColor = "#8C3A5A";
   const p = progress[course.name];
   const thRead = p?.th || [];
-  const visible = (course.theory || []).map((t, i) => ({ ...t, _idx: i })).filter((t) => !t.hidden);
-  return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", minHeight: "100%", background: th.bg, fontFamily: "'DM Sans',sans-serif" }, className: "anim-slide" }, /* @__PURE__ */ React.createElement(TopBar, { label: "Theorie", backLabel: course.name, onBack, th }), /* @__PURE__ */ React.createElement("div", { style: { padding: "12px 24px" } }, /* @__PURE__ */ React.createElement("h2", { style: { fontFamily: "'Playfair Display',serif", fontSize: 21, color: th.text, fontWeight: 500, marginBottom: 4 } }, course.name), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, color: th.subtext, marginBottom: 6 } }, visible.length, " Abschnitte"), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 22 } }, /* @__PURE__ */ React.createElement("div", { style: { flex: 1, height: 3, background: th.surface, borderRadius: 2 } }, /* @__PURE__ */ React.createElement("div", { style: { width: `${thRead.length / (visible.length || 1) * 100}%`, height: "100%", background: thColor, borderRadius: 2, transition: "width 0.5s" } })), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 11, color: thColor, fontWeight: 600, flexShrink: 0 } }, thRead.length, "/", visible.length, " gelesen")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 10 } }, visible.map((sec, i) => {
+  const visible = getTheoryItems(course).map((t, i) => ({ ...t, _idx: i })).filter((t) => !t.hidden);
+  return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", minHeight: "100%", background: th.bg, fontFamily: "'DM Sans',sans-serif" }, className: "anim-slide" }, /* @__PURE__ */ React.createElement(TopBar, { label: getTheoryModeLabel(course), backLabel: course.name, onBack, th }), /* @__PURE__ */ React.createElement("div", { style: { padding: "12px 24px" } }, /* @__PURE__ */ React.createElement("h2", { style: { fontFamily: "'Playfair Display',serif", fontSize: 21, color: th.text, fontWeight: 500, marginBottom: 4 } }, course.name), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, color: th.subtext, marginBottom: 6 } }, visible.length, " Abschnitte"), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8, marginBottom: 22 } }, /* @__PURE__ */ React.createElement("div", { style: { flex: 1, height: 3, background: th.surface, borderRadius: 2 } }, /* @__PURE__ */ React.createElement("div", { style: { width: `${thRead.length / (visible.length || 1) * 100}%`, height: "100%", background: thColor, borderRadius: 2, transition: "width 0.5s" } })), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 11, color: thColor, fontWeight: 600, flexShrink: 0 } }, thRead.length, "/", visible.length, " gelesen")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 10 } }, visible.map((sec, i) => {
     const isRead = thRead.includes(sec._idx);
     const preview = stripHtml(sec.html).slice(0, 100);
     return /* @__PURE__ */ React.createElement(
@@ -1660,10 +1663,11 @@ function TheoryIndexScreen({ course, th, progress, onSection, onBack }) {
   }))));
 }
 function TheoryReaderScreen({ course, th, progress, updateProgress, sectionIdx, onBack }) {
-  const visible = (course.theory || []).map((t, i) => ({ ...t, _idx: i })).filter((t) => !t.hidden);
+  const visible = getTheoryItems(course).map((t, i) => ({ ...t, _idx: i })).filter((t) => !t.hidden);
   const startPos = visible.findIndex((t) => t._idx === sectionIdx);
   const [pos, setPos] = React.useState(Math.max(0, startPos));
   const sec = visible[pos];
+  const isScriptMode = !!course?.scriptPdfs;
   const thColor = "#8C3A5A";
   const contentRef = React.useRef();
   useKaTeX(contentRef, [pos]);
@@ -1675,7 +1679,7 @@ function TheoryReaderScreen({ course, th, progress, updateProgress, sectionIdx, 
     });
   }, [pos]);
   if (!sec) return null;
-  return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", height: "100%", background: th.bg, fontFamily: "'DM Sans',sans-serif", display: "flex", flexDirection: "column" } }, /* @__PURE__ */ React.createElement("div", { style: { padding: "8px 20px 0", flexShrink: 0 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 0 14px", borderBottom: th.border } }, /* @__PURE__ */ React.createElement("button", { onClick: onBack, style: { background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 5, color: th.subtext, fontFamily: "'DM Sans',sans-serif", fontSize: 14, padding: 0 } }, /* @__PURE__ */ React.createElement(ChevL, { c: th.subtext }), "Theorie"), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 12, color: th.subtext } }, pos + 1, " / ", visible.length))), /* @__PURE__ */ React.createElement("div", { style: { flex: 1, overflow: "auto", padding: "20px 24px 0" }, key: pos, className: "anim-slide", ref: contentRef }, /* @__PURE__ */ React.createElement("div", { style: { borderLeft: `3px solid ${thColor}`, paddingLeft: 14, marginBottom: 18 } }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 10, fontWeight: 600, color: thColor, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 5 } }, "Abschnitt ", pos + 1), /* @__PURE__ */ React.createElement("h2", { style: { fontFamily: "'Playfair Display',serif", fontSize: 23, color: th.text, fontWeight: 500, lineHeight: 1.25 } }, sec.title)), /* @__PURE__ */ React.createElement("div", { className: "theory-content", dangerouslySetInnerHTML: { __html: sec.html || "" } }), /* @__PURE__ */ React.createElement("div", { style: { height: 20 } })), /* @__PURE__ */ React.createElement("div", { style: { padding: "12px 24px 28px", borderTop: th.border, background: th.bg, display: "flex", gap: 10, flexShrink: 0 } }, /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", height: "100%", background: th.bg, fontFamily: "'DM Sans',sans-serif", display: "flex", flexDirection: "column", overflow: isScriptMode ? "hidden" : void 0 } }, /* @__PURE__ */ React.createElement("div", { style: { padding: "8px 20px 0", flexShrink: 0 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 0 14px", borderBottom: th.border } }, /* @__PURE__ */ React.createElement("button", { onClick: onBack, style: { background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 5, color: th.subtext, fontFamily: "'DM Sans',sans-serif", fontSize: 14, padding: 0 } }, /* @__PURE__ */ React.createElement(ChevL, { c: th.subtext }), getTheoryModeLabel(course)), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 12, color: th.subtext } }, pos + 1, " / ", visible.length))), /* @__PURE__ */ React.createElement("div", { style: isScriptMode ? { flex: 1, minHeight: 0, overflow: "hidden", padding: "8px 8px 0" } : { flex: 1, overflow: "auto", padding: "20px 24px 0" }, key: pos, className: "anim-slide", ref: contentRef }, !isScriptMode && /* @__PURE__ */ React.createElement("div", { style: { borderLeft: `3px solid ${thColor}`, paddingLeft: 14, marginBottom: 18 } }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 10, fontWeight: 600, color: thColor, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 5 } }, "Abschnitt ", pos + 1), /* @__PURE__ */ React.createElement("h2", { style: { fontFamily: "'Playfair Display',serif", fontSize: 23, color: th.text, fontWeight: 500, lineHeight: 1.25 } }, sec.title)), /* @__PURE__ */ React.createElement("div", { className: "theory-content", style: isScriptMode ? { height: "100%", width: "100%", maxWidth: "none" } : void 0, dangerouslySetInnerHTML: { __html: sec.html || "" } }), !isScriptMode && /* @__PURE__ */ React.createElement("div", { style: { height: 20 } })), /* @__PURE__ */ React.createElement("div", { style: { padding: "12px 24px 28px", borderTop: th.border, background: th.bg, display: "flex", gap: 10, flexShrink: 0 } }, /* @__PURE__ */ React.createElement(
     "button",
     {
       onClick: () => setPos((i) => i - 1),
@@ -1902,29 +1906,20 @@ function DeskModes({ th, progress, course, onMode, onBackToCourses }) {
     { id: "flashcards-sr", icon: /* @__PURE__ */ React.createElement(IcoFlash, null), label: "Karteikarten (Wiederholung)", color: "#A66C1E", desc: "Abstandswiederholung (f\xE4llige Karten)", pct: Math.min(1, Object.keys(p?.sr || {}).length / Math.max(1, (course.kk || []).length) * 0.5) },
     { id: "fillblanks", icon: /* @__PURE__ */ React.createElement(IcoFill, null), label: "L\xFCckentext", color: "#4A7C59", desc: `${p?.fb?.length || 0}/${(course.lt || []).length} erledigt`, pct: comp.fb },
     { id: "mc", icon: /* @__PURE__ */ React.createElement(IcoMC, null), label: "Multiple Choice", color: ACCENT, desc: p?.mc?.attempts ? `Best ${p.mc.best}/${(course.mc || []).length} \xB7 ${p.mc.attempts}\xD7` : `${(course.mc || []).length} Fragen`, pct: comp.mc },
-    { id: "theory-index", icon: /* @__PURE__ */ React.createElement(IcoBook, null), label: "Theorie", color: "#8C3A5A", desc: `${p?.th?.length || 0}/${(course.theory || []).filter((t) => !t.hidden).length} gelesen`, pct: comp.th },
+    { id: "theory-index", icon: /* @__PURE__ */ React.createElement(IcoBook, null), label: getTheoryModeLabel(course), color: "#8C3A5A", desc: `${p?.th?.length || 0}/${getTheoryItems(course).filter((t) => !t.hidden).length} gelesen`, pct: comp.th },
     ...(course.pathways || []).length ? [{ id: "pathways", icon: /* @__PURE__ */ React.createElement(IcoBook, null), label: "Stoffwechselwege", color: PW_COLOR, desc: comp.pw >= 0.999 ? "Abgeschlossen" : `${Math.round(comp.pw * 100)}% Wege`, pct: comp.pw }] : [],
-    ...(courseSupportsKkMcMix(course) ? [{ id: "kk-mc-mix", icon: /* @__PURE__ */ React.createElement(IcoMix, null), label: "Mix: Karten & MC", color: MIX_COLOR, desc: `${(course.kk || []).length} KK + ${(course.mc || []).length} MC`, pct: (comp.fc + comp.mc) / 2 }] : [])
+    ...(courseSupportsKkMcMix(course) ? [{ id: "kk-mc-mix", icon: /* @__PURE__ */ React.createElement(IcoMix, null), label: "Gemischt", color: MIX_COLOR, desc: `${(course.kk || []).length} KK + ${(course.mc || []).length} MC`, pct: (comp.fc + comp.mc) / 2 }] : [])
   ].filter((m) => {
     if (m.id === "flashcards" && !(course.kk || []).length) return false;
     if (m.id === "flashcards-sr" && !(course.kk || []).length) return false;
     if (m.id === "fillblanks" && !(course.lt || []).length) return false;
     if (m.id === "mc" && !(course.mc || []).length) return false;
-    if (m.id === "theory-index" && !(course.theory || []).length) return false;
+    if (m.id === "theory-index" && !getTheoryItems(course).length) return false;
     if (m.id === "pathways" && !(course.pathways || []).length) return false;
     if (m.id === "kk-mc-mix" && !courseSupportsKkMcMix(course)) return false;
     return true;
   });
-  return /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 700 }, className: "anim-slide" }, onBackToCourses && /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      type: "button",
-      onClick: onBackToCourses,
-      style: { display: "flex", alignItems: "center", gap: 6, marginBottom: 16, background: "none", border: "none", cursor: "pointer", color: th.subtext, fontFamily: "'DM Sans',sans-serif", fontSize: 14, padding: 0 }
-    },
-    /* @__PURE__ */ React.createElement(ChevL, { c: th.subtext }),
-    "Zur F\xE4cher\xFCbersicht"
-  ), /* @__PURE__ */ React.createElement("div", { style: { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4, overflow: "hidden", display: "flex", marginBottom: 20 } }, /* @__PURE__ */ React.createElement("div", { style: { flexShrink: 0 } }, /* @__PURE__ */ React.createElement(Thumbnail, { idx: ci, width: 260, height: 160, radius: 0 })), /* @__PURE__ */ React.createElement("div", { style: { padding: "24px 28px", display: "flex", flexDirection: "column", justifyContent: "center" } }, /* @__PURE__ */ React.createElement("h3", { style: { fontFamily: "'Playfair Display',serif", fontSize: 20, color: th.text, fontWeight: 500, margin: "0 0 8px", lineHeight: 1.3 } }, course.name), comp.overall > 0 ? /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10, marginBottom: 12 } }, /* @__PURE__ */ React.createElement(ProgressRing, { pct: comp.overall, size: 38, stroke: 3, color: ACCENT, bg: th.surface }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 14, fontWeight: 600, color: th.text } }, Math.round(comp.overall * 100), "% abgeschlossen"), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 11, color: th.subtext } }, relTime(p?.lastStudied), " \xB7 ", p?.sessions, " Sessions"))) : /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, color: th.subtext, marginBottom: 12 } }, course.description || ""), topics.length > 0 && /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexWrap: "wrap", gap: 6 } }, topics.map((t) => /* @__PURE__ */ React.createElement("span", { key: t, style: { fontSize: 11, padding: "3px 10px", borderRadius: 20, background: th.tag, border: th.border, color: th.subtext } }, t))))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 } }, modes.map((m) => /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 700 }, className: "anim-slide" }, /* @__PURE__ */ React.createElement("div", { style: { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4, overflow: "hidden", display: "flex", marginBottom: 20 } }, /* @__PURE__ */ React.createElement("div", { style: { flexShrink: 0 } }, /* @__PURE__ */ React.createElement(Thumbnail, { idx: ci, width: 260, height: 160, radius: 0 })), /* @__PURE__ */ React.createElement("div", { style: { padding: "24px 28px", display: "flex", flexDirection: "column", justifyContent: "center" } }, /* @__PURE__ */ React.createElement("h3", { style: { fontFamily: "'Playfair Display',serif", fontSize: 20, color: th.text, fontWeight: 500, margin: "0 0 8px", lineHeight: 1.3 } }, course.name), comp.overall > 0 ? /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10, marginBottom: 12 } }, /* @__PURE__ */ React.createElement(ProgressRing, { pct: comp.overall, size: 38, stroke: 3, color: ACCENT, bg: th.surface }), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 14, fontWeight: 600, color: th.text } }, Math.round(comp.overall * 100), "% abgeschlossen"), /* @__PURE__ */ React.createElement("p", { style: { fontSize: 11, color: th.subtext } }, relTime(p?.lastStudied), " \xB7 ", p?.sessions, " Sessions"))) : /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, color: th.subtext, marginBottom: 12 } }, course.description || ""), topics.length > 0 && /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexWrap: "wrap", gap: 6 } }, topics.map((t) => /* @__PURE__ */ React.createElement("span", { key: t, style: { fontSize: 11, padding: "3px 10px", borderRadius: 20, background: th.tag, border: th.border, color: th.subtext } }, t))))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 } }, modes.map((m) => /* @__PURE__ */ React.createElement(
     "div",
     {
       key: m.id,
@@ -2175,7 +2170,7 @@ function DeskTheoryIndex({ th, course, progress, onSection }) {
   const thColor = "#8C3A5A";
   const p = progress[course.name];
   const thRead = p?.th || [];
-  const visible = (course.theory || []).map((t, i) => ({ ...t, _idx: i })).filter((t) => !t.hidden);
+  const visible = getTheoryItems(course).map((t, i) => ({ ...t, _idx: i })).filter((t) => !t.hidden);
   return /* @__PURE__ */ React.createElement("div", { style: { padding: "30px 34px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10, marginBottom: 20 } }, /* @__PURE__ */ React.createElement("div", { style: { flex: 1, height: 3, background: th.surface, borderRadius: 2 } }, /* @__PURE__ */ React.createElement("div", { style: { width: `${thRead.length / (visible.length || 1) * 100}%`, height: "100%", background: thColor, borderRadius: 2, transition: "width 0.5s" } })), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 12, color: thColor, fontWeight: 600 } }, thRead.length, "/", visible.length, " gelesen")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 10 } }, visible.map((sec, i) => {
     const isRead = thRead.includes(sec._idx);
     const preview = stripHtml(sec.html).slice(0, 100);
@@ -2196,10 +2191,11 @@ function DeskTheoryIndex({ th, course, progress, onSection }) {
   })));
 }
 function DeskTheoryReader({ th, course, progress, updateProgress, sectionIdx, onBack, onChange }) {
-  const visible = (course.theory || []).map((t, i) => ({ ...t, _idx: i })).filter((t) => !t.hidden);
+  const visible = getTheoryItems(course).map((t, i) => ({ ...t, _idx: i })).filter((t) => !t.hidden);
   const startPos = visible.findIndex((t) => t._idx === sectionIdx);
   const [pos, setPos] = React.useState(Math.max(0, startPos));
   const sec = visible[pos];
+  const isScriptMode = !!course?.scriptPdfs;
   const thColor = "#8C3A5A";
   const ref = React.useRef();
   useKaTeX(ref, [pos]);
@@ -2211,7 +2207,7 @@ function DeskTheoryReader({ th, course, progress, updateProgress, sectionIdx, on
     onChange(sec._idx);
   }, [pos]);
   if (!sec) return null;
-  return /* @__PURE__ */ React.createElement("div", { style: { padding: "30px 34px" }, ref }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10, marginBottom: 18 } }, /* @__PURE__ */ React.createElement("button", { onClick: onBack, style: { background: "none", border: "none", cursor: "pointer", color: th.subtext, fontFamily: "'DM Sans',sans-serif", fontSize: 13, display: "flex", alignItems: "center", gap: 4, padding: 0 } }, /* @__PURE__ */ React.createElement(ChevL, { c: th.subtext }), "Alle Abschnitte"), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 12, color: th.subtext, marginLeft: "auto" } }, pos + 1, "/", visible.length)), /* @__PURE__ */ React.createElement("div", { style: { borderLeft: `3px solid ${thColor}`, paddingLeft: 14, marginBottom: 18 } }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 10, fontWeight: 600, color: thColor, textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 4 } }, "Abschnitt ", pos + 1), /* @__PURE__ */ React.createElement("h3", { style: { fontFamily: "'Playfair Display',serif", fontSize: 20, color: th.text, fontWeight: 500 }, key: pos, className: "anim-slide" }, sec.title)), /* @__PURE__ */ React.createElement("div", { key: pos, className: "anim-slide theory-content", dangerouslySetInnerHTML: { __html: sec.html || "" } }), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 10, marginTop: 18, paddingTop: 18, borderTop: th.border } }, /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { style: isScriptMode ? { padding: "14px 14px 10px", height: "100%", display: "flex", flexDirection: "column", minHeight: 0 } : { padding: "30px 34px" }, ref }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 10, marginBottom: 18 } }, /* @__PURE__ */ React.createElement("button", { onClick: onBack, style: { background: "none", border: "none", cursor: "pointer", color: th.subtext, fontFamily: "'DM Sans',sans-serif", fontSize: 13, display: "flex", alignItems: "center", gap: 4, padding: 0 } }, /* @__PURE__ */ React.createElement(ChevL, { c: th.subtext }), "Alle Abschnitte"), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 12, color: th.subtext, marginLeft: "auto" } }, pos + 1, "/", visible.length)), !isScriptMode && /* @__PURE__ */ React.createElement("div", { style: { borderLeft: `3px solid ${thColor}`, paddingLeft: 14, marginBottom: 18 } }, /* @__PURE__ */ React.createElement("p", { style: { fontSize: 10, fontWeight: 600, color: thColor, textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 4 } }, "Abschnitt ", pos + 1), /* @__PURE__ */ React.createElement("h3", { style: { fontFamily: "'Playfair Display',serif", fontSize: 20, color: th.text, fontWeight: 500 }, key: pos, className: "anim-slide" }, sec.title)), /* @__PURE__ */ React.createElement("div", { key: pos, className: "anim-slide theory-content", style: isScriptMode ? { flex: 1, minHeight: 0, maxWidth: "none", width: "100%", overflow: "hidden" } : void 0, dangerouslySetInnerHTML: { __html: sec.html || "" } }), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 10, marginTop: 18, paddingTop: 18, borderTop: th.border } }, /* @__PURE__ */ React.createElement(
     "button",
     {
       onClick: () => setPos((i) => i - 1),
@@ -2254,12 +2250,12 @@ function DesktopApp({ th, isDark, progress, updateProgress, toggleTheme, onReset
     ...canAccessMacroDiagrams ? [{ id: "macro-diagrams", label: "Makro-Diagramme", ico: "M4 19h16M7 16l3-4 3 2 4-6" }] : []
   ];
   const studyModes = [
-    { id: "flashcards", label: "Karteikarten", color: "#C4892A" },
+    ...(course?.kk || []).length ? [{ id: "flashcards", label: "Karteikarten", color: "#C4892A" }] : [],
     ...(course?.kk || []).length ? [{ id: "flashcards-sr", label: "Karten Wiederholung", color: "#A66C1E" }] : [],
-    { id: "fillblanks", label: "L\xFCckentext", color: "#4A7C59" },
-    { id: "mc", label: "Multiple Choice", color: ACCENT },
-    ...(courseSupportsKkMcMix(course) ? [{ id: "kk-mc-mix", label: "Mix (KK+MC)", color: MIX_COLOR }] : []),
-    { id: "theory-index", label: "Theorie", color: "#8C3A5A" },
+    ...(course?.lt || []).length ? [{ id: "fillblanks", label: "L\xFCckentext", color: "#4A7C59" }] : [],
+    ...(course?.mc || []).length ? [{ id: "mc", label: "Multiple Choice", color: ACCENT }] : [],
+    ...(courseSupportsKkMcMix(course) ? [{ id: "kk-mc-mix", label: "Gemischt", color: MIX_COLOR }] : []),
+    ...(getTheoryItems(course).length ? [{ id: "theory-index", label: "Theorie", color: "#8C3A5A" }] : []),
     ...(course?.pathways || []).length ? [{ id: "pathways", label: "Stoffwechselwege", color: PW_COLOR }] : []
   ];
   const headerTitle = () => {
@@ -2270,9 +2266,9 @@ function DesktopApp({ th, isDark, progress, updateProgress, toggleTheme, onReset
     if (screen === "flashcards-sr") return { title: "Karteikarten \xB7 Wiederholung", sub: `Abstandswiederholung \xB7 ${course?.name}` };
     if (screen === "fillblanks") return { title: "L\xFCckentext", sub: `${course?.lt?.length || 0} Aufgaben \xB7 ${course?.name}` };
     if (screen === "mc") return { title: "Multiple Choice", sub: `${course?.mc?.length || 0} Fragen \xB7 ${course?.name}` };
-    if (screen === "kk-mc-mix") return { title: "Mix: Karten & MC", sub: `${course?.kk?.length || 0} Karten + ${course?.mc?.length || 0} MC \xB7 ${course?.name}` };
+    if (screen === "kk-mc-mix") return { title: "Gemischt", sub: `${course?.kk?.length || 0} Karten + ${course?.mc?.length || 0} MC \xB7 ${course?.name}` };
     if (screen === "theory-index") return { title: "Theorie", sub: `${(course?.theory || []).filter((t) => !t.hidden).length} Abschnitte \xB7 ${course?.name}` };
-    if (screen === "theory-reader") return { title: (course?.theory || [])[theorySec]?.title || "Theorie", sub: course?.name };
+    if (screen === "theory-reader") return { title: getTheoryItems(course)[theorySec]?.title || getTheoryModeLabel(course), sub: course?.name };
     if (screen === "macro-diagrams") return { title: "Makro-Diagramme", sub: "Interaktive Modellgrafiken" };
     if (screen === "pathways") return { title: "Stoffwechselwege", sub: `${(course?.pathways || []).length} Wege \xB7 ${course?.name}` };
     return { title: "", sub: "" };
@@ -2314,11 +2310,18 @@ function DesktopApp({ th, isDark, progress, updateProgress, toggleTheme, onReset
   )))), /* @__PURE__ */ React.createElement("div", { style: { flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { style: { height: 68, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 36px", borderBottom: th.border, flexShrink: 0 } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h2", { style: { fontSize: 21, fontFamily: "'Playfair Display',serif", fontWeight: 500, color: th.text } }, title), sub && /* @__PURE__ */ React.createElement("p", { style: { fontSize: 13, color: th.subtext, marginTop: 1 } }, sub)), !["courses", "progress"].includes(screen) && course && /* @__PURE__ */ React.createElement(
     "button",
     {
-      onClick: () => go("modes"),
+      onClick: () => {
+        if (screen === "modes") {
+          setCourse(null);
+          go("courses");
+        } else {
+          go("modes");
+        }
+      },
       style: { display: "flex", alignItems: "center", gap: 7, padding: "8px 16px", background: th.cardBg, border: th.border, borderRadius: 8, color: th.text, fontSize: 14, cursor: "pointer", fontFamily: "'DM Sans',sans-serif" }
     },
     /* @__PURE__ */ React.createElement(ChevL, { c: th.text, s: 16 }),
-    "Alle Modi"
+    screen === "modes" ? "Zur Fach\xFCbersicht" : "Alle Modi"
   )), /* @__PURE__ */ React.createElement("div", { style: { flex: 1, minHeight: 0, overflow: "auto", padding: "28px 36px", display: "flex", flexDirection: "column" } }, screen === "courses" && /* @__PURE__ */ React.createElement(DeskCourses, { th, progress, onSelect: selectCourse }), screen === "progress" && /* @__PURE__ */ React.createElement(DeskProgress, { th, progress, onCourse: (s) => {
     setCourse(s);
     go("modes");
@@ -2331,7 +2334,7 @@ function DesktopApp({ th, isDark, progress, updateProgress, toggleTheme, onReset
   }, backLabel: "F\xE4cher" })), screen === "flashcards" && course && /* @__PURE__ */ React.createElement("div", { className: "anim-slide desk-flashcards-shell" }, /* @__PURE__ */ React.createElement("div", { style: { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4 } }, /* @__PURE__ */ React.createElement(DeskFlash, { ...p, srMode: false, onOpenTheory: openTheory }))), screen === "flashcards-sr" && course && /* @__PURE__ */ React.createElement("div", { className: "anim-slide desk-flashcards-shell" }, /* @__PURE__ */ React.createElement("div", { style: { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4 } }, /* @__PURE__ */ React.createElement(DeskFlash, { ...p, srMode: true, onOpenTheory: openTheory }))), screen === "fillblanks" && course && /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 580, margin: "0 auto" }, className: "anim-slide" }, /* @__PURE__ */ React.createElement("div", { style: { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4 } }, /* @__PURE__ */ React.createElement(DeskFill, { ...p }))), screen === "mc" && course && /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 1080, width: "100%", margin: "0 auto" }, className: "anim-slide" }, /* @__PURE__ */ React.createElement("div", { style: { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4 } }, /* @__PURE__ */ React.createElement(DeskMC, { ...p }))), screen === "kk-mc-mix" && course && courseSupportsKkMcMix(course) && /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 1240, width: "100%", margin: "0 auto" }, className: "anim-slide" }, /* @__PURE__ */ React.createElement("div", { style: { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4 } }, /* @__PURE__ */ React.createElement(DeskKkMcMix, { ...p, onOpenTheory: openTheory }))), screen === "theory-index" && course && /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 580, margin: "0 auto" }, className: "anim-slide" }, /* @__PURE__ */ React.createElement("div", { style: { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4 } }, /* @__PURE__ */ React.createElement(DeskTheoryIndex, { ...p, onSection: (i) => {
     setTheorySec(i);
     go("theory-reader");
-  } }))), screen === "theory-reader" && course && /* @__PURE__ */ React.createElement("div", { style: { maxWidth: 580, margin: "0 auto" }, className: "anim-slide" }, /* @__PURE__ */ React.createElement("div", { style: { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4 } }, /* @__PURE__ */ React.createElement(DeskTheoryReader, { ...p, sectionIdx: theorySec, onBack: () => go("theory-index"), onChange: setTheorySec }))))));
+  } }))), screen === "theory-reader" && course && /* @__PURE__ */ React.createElement("div", { style: course?.scriptPdfs ? { width: "100%", height: "100%", minHeight: 0, margin: 0 } : { maxWidth: 580, margin: "0 auto" }, className: "anim-slide" }, /* @__PURE__ */ React.createElement("div", { style: course?.scriptPdfs ? { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4, width: "100%", height: "100%", minHeight: 0, display: "flex", flexDirection: "column" } : { background: th.cardBg, border: th.border, borderRadius: CARD_R + 4 } }, /* @__PURE__ */ React.createElement(DeskTheoryReader, { ...p, sectionIdx: theorySec, onBack: () => go("theory-index"), onChange: setTheorySec }))))));
 }
 function App() {
   const [isDark, setIsDark] = React.useState(
