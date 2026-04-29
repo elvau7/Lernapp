@@ -20,6 +20,10 @@ as $$
 $$;
 
 alter table public.user_progress enable row level security;
+revoke all on table public.user_progress from public;
+revoke all on table public.user_progress from anon;
+revoke all on table public.user_progress from authenticated;
+grant select, insert, update on table public.user_progress to authenticated;
 
 drop policy if exists "user_progress_select_own" on public.user_progress;
 create policy "user_progress_select_own"

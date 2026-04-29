@@ -10,6 +10,7 @@ const mobileHelpBtn = document.getElementById("mobile-help-btn");
 const mobileHelpDialog = document.getElementById("mobile-help-dialog");
 const mobileHelpClose = document.getElementById("mobile-help-close");
 const adminOpenBtn = document.getElementById("admin-open-btn");
+const logoutBtn = document.getElementById("logout-btn");
 const adminPanel = document.getElementById("admin-panel");
 const adminCloseBtn = document.getElementById("admin-close-btn");
 const adminRefreshBtn = document.getElementById("admin-refresh-btn");
@@ -22,7 +23,6 @@ const adminMessage = document.getElementById("admin-message");
 let appLoaded = false;
 let supabaseClient = null;
 let usernameDomain = "users.local";
-let userLevels = {};
 let levelSubjectAccess = {};
 let defaultLevel = "molekularbiologie";
 let currentAccessLevel = "molekularbiologie";
@@ -49,12 +49,14 @@ function showLogin() {
     mobileHelpBtn.classList.toggle("hidden", !isMobileDevice());
   }
   if (adminOpenBtn) adminOpenBtn.classList.add("hidden");
+  if (logoutBtn) logoutBtn.classList.add("hidden");
   if (adminPanel) adminPanel.classList.add("hidden");
 }
 
 function showApp() {
   loginScreen.style.display = "none";
   reactRoot.style.display = "block";
+  if (logoutBtn) logoutBtn.classList.remove("hidden");
 }
 
 function setAdminMessage(message, tone = "") {
@@ -120,6 +122,7 @@ function renderAdminTableHead() {
       <th>Nutzer</th>
       <th>Status</th>
       <th>Anfrage</th>
+      <th>Letzte Anmeldung</th>
       <th>Rolle</th>
       <th>Aktion</th>
     `;
@@ -138,7 +141,7 @@ function renderRows(rows) {
   if (!Array.isArray(rows) || rows.length === 0) {
     adminTableBody.innerHTML = `
       <tr>
-        <td colspan="${adminView === "all" ? "5" : "4"}">Keine Eintraege vorhanden.</td>
+        <td colspan="${adminView === "all" ? "6" : "4"}">Keine Eintraege vorhanden.</td>
       </tr>
     `;
     return;
@@ -151,6 +154,9 @@ function renderRows(rows) {
       const requestedAt = row.requested_at
         ? new Date(row.requested_at).toLocaleString("de-AT")
         : "-";
+      const lastSignInAt = row.last_sign_in_at
+        ? new Date(row.last_sign_in_at).toLocaleString("de-AT")
+        : "-";
       const selectedRole = normalizeRole(row.role);
       const roleOptions = ["molekularbiologie", "economics", "admin"]
         .map(role => {
@@ -161,6 +167,9 @@ function renderRows(rows) {
       const status = normalizeStatus(row.status);
       const statusCell = adminView === "all"
         ? `<td><span class="admin-status-pill ${status}">${escapeHtml(status)}</span></td>`
+        : "";
+      const lastSignInCell = adminView === "all"
+        ? `<td>${escapeHtml(lastSignInAt)}</td>`
         : "";
       const actionButtons = adminView === "all"
         ? `
@@ -178,6 +187,7 @@ function renderRows(rows) {
           <td>${username}</td>
           ${statusCell}
           <td>${requestedAt}</td>
+          ${lastSignInCell}
           <td>
             <select class="admin-role-select">${roleOptions}</select>
           </td>
@@ -212,11 +222,6 @@ async function applyAdminDecision(userId, status, role) {
   if (error) throw error;
 }
 
-function getAccessLevelForUsername(username) {
-  const normalized = String(username || "").trim().toLowerCase();
-  return userLevels[normalized] || defaultLevel;
-}
-
 function exposeAccessLevel(level) {
   window.LA_ACCESS_LEVEL = String(level || defaultLevel || "molekularbiologie").trim().toLowerCase();
 }
@@ -226,7 +231,12 @@ function normalizeStatus(status) {
 }
 
 function normalizeRole(role) {
-  return String(role || defaultLevel).trim().toLowerCase();
+  return String(role || "").trim().toLowerCase();
+}
+
+function isKnownRole(role) {
+  if (role === "admin") return true;
+  return Object.prototype.hasOwnProperty.call(levelSubjectAccess, role);
 }
 
 async function loadProfile(userId) {
@@ -247,7 +257,6 @@ async function loadProfile(userId) {
 async function ensureActiveProfile(user) {
   const profile = await loadProfile(user?.id);
   currentUserId = user?.id || null;
-  const username = String(user?.email || "").toLowerCase().split("@")[0] || "";
   if (!profile) {
     await supabaseClient.auth.signOut();
     throw new Error("Dein Zugang wird noch vorbereitet. Bitte spaeter erneut versuchen.");
@@ -260,8 +269,11 @@ async function ensureActiveProfile(user) {
     await supabaseClient.auth.signOut();
     throw new Error("Registrierungsanfrage gesendet. Bitte auf Freischaltung warten.");
   }
-  const fallbackRole = getAccessLevelForUsername(username);
-  currentAccessLevel = profile.role || fallbackRole;
+  if (!profile.role || !isKnownRole(profile.role)) {
+    await supabaseClient.auth.signOut();
+    throw new Error("Keine gueltige Rolle gefunden. Bitte kontaktiere den Admin.");
+  }
+  currentAccessLevel = profile.role;
   currentUserRole = currentAccessLevel;
   exposeAccessLevel(currentAccessLevel);
   toggleAdminButton();
@@ -306,6 +318,8 @@ async function bootApp() {
     "Fächer/cards_finanz.js",
     "Fächer/cards_biochemie.js",
     "Fächer/cards_biochemie_skripte.js",
+    "Fächer/cards_soziologie.js",
+    "Fächer/cards_vertragsrecht.js",
     "molecules/molecule_mapping_bundle.js",
     "Fächer/cards_strukturformeln.js",
     "macro-diagrams.js",
@@ -339,6 +353,9 @@ async function checkSession() {
     await bootApp();
     showApp();
   } catch (error) {
+    if (supabaseClient) {
+      await supabaseClient.auth.signOut();
+    }
     currentUserId = null;
     currentUserRole = null;
     toggleAdminButton();
@@ -423,9 +440,29 @@ async function requestSignup() {
   }
 }
 
+async function logout() {
+  setError("");
+  try {
+    if (supabaseClient) {
+      await supabaseClient.auth.signOut();
+    }
+  } catch (error) {
+    setError(error?.message || "Abmeldung fehlgeschlagen.");
+  } finally {
+    currentUserId = null;
+    currentUserRole = null;
+    closeAdminPanel();
+    toggleAdminButton();
+    showLogin();
+  }
+}
+
 loginButton.addEventListener("click", login);
 if (signupButton) {
   signupButton.addEventListener("click", requestSignup);
+}
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", logout);
 }
 passwordInput.addEventListener("keydown", event => {
   if (event.key === "Enter") login();
@@ -549,14 +586,6 @@ function initSupabase() {
   }
   if (config.usernameDomain) {
     usernameDomain = String(config.usernameDomain).trim().toLowerCase();
-  }
-  if (config.userLevels && typeof config.userLevels === "object") {
-    userLevels = Object.fromEntries(
-      Object.entries(config.userLevels).map(([username, level]) => [
-        String(username).trim().toLowerCase(),
-        String(level).trim().toLowerCase(),
-      ])
-    );
   }
   if (config.levelSubjectAccess && typeof config.levelSubjectAccess === "object") {
     levelSubjectAccess = Object.fromEntries(

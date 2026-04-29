@@ -3,15 +3,8 @@ window.SUPABASE_CONFIG = {
   url: "https://qxydhatqceympaipruem.supabase.co",
   anonKey: "sb_publishable_pQPtryK705fuHNEpvgjVhA_ZMzlPUJG",
   usernameDomain: "users.local",
-  // If username is not listed, defaultLevel is used.
+  // Fallback only for subject filtering if a role has no explicit mapping.
   defaultLevel: "molekularbiologie",
-  // Map app usernames to levels.
-  userLevels: {
-    admin: "admin",
-    lion: "admin",
-    elisabeth: "molekularbiologie",
-    julia: "molekularbiologie",
-  },
   // UI-only subject visibility by level.
   levelSubjectAccess: {
     economics: [
@@ -21,6 +14,8 @@ window.SUPABASE_CONFIG = {
       "Gender Economics",
       "Einführung in die BWL",
       "Finanz",
+      "Einführung in die Soziologie",
+      "Rechtsgrundlagen & Vertragsrecht",
     ],
     molekularbiologie: ["Biochemie", "Biochemie Skripte", "Strukturformeln"],
   },

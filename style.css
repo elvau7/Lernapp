@@ -249,6 +249,25 @@ html,body{
   letter-spacing:.02em;
   cursor:pointer;
 }
+.logout-btn{
+  position:fixed;
+  left:16px;
+  bottom:16px;
+  z-index:1000;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:var(--panel2);
+  color:var(--text);
+  padding:10px 14px;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  cursor:pointer;
+}
+.logout-btn:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
 .admin-panel{
   position:fixed;
   inset:0;

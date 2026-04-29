@@ -12,8 +12,8 @@ SUBJECTS.push({
    * ---------------------------------------------------------- */
   kk: [
     // === ID 1: Wertschöpfung ===
-    {id:1, category:"Wertschöpfung", question:"Was versteht man unter Wertschöpfung?", answer:"Den durch die wirtschaftliche Tätigkeit einer Wirtschaftseinheit geschaffenen Mehrwert.\n\nMehrwert = erzielte Werte − Vorleistungen (verbrauchte Werte)."},
-    {id:1, category:"Wertschöpfung", question:"Wie entsteht Wertschöpfung in einem Unternehmen?", answer:"Indem vorhandene Güter (Ressourcen) in Güter mit einem höheren Marktwert transformiert werden.\n\nBeispiel: Holzbohlen → hochwertiger Esstisch."},
+    {id:1, category:"Wertschöpfung", question:"Was versteht man unter Wertschöpfung?", answer:"Den durch die wirtschaftliche Tätigkeit einer Wirtschaftseinheit geschaffenen Mehrwert. Mehrwert = erzielte Werte − Vorleistungen (verbrauchte Werte)."},
+    {id:1, category:"Wertschöpfung", question:"Wie entsteht Wertschöpfung in einem Unternehmen?", answer:"Indem vorhandene Güter (Ressourcen) in Güter mit einem höheren Marktwert transformiert werden. Beispiel: Holzbohlen → hochwertiger Esstisch."},
     {id:1, category:"Wertschöpfung", question:"Warum existieren Unternehmen aus ökonomischer Sicht?", answer:"Weil sie einen Mehrwert (Wertschöpfung) schaffen. Ohne Wertschöpfung gäbe es keinen wirtschaftlich nachvollziehbaren Grund für ihr Handeln."},
 
     // === ID 2: Wertkette ===
@@ -83,7 +83,7 @@ SUBJECTS.push({
 
     // === ID 15: Kostentheorie ===
     {id:15, category:"Kostentheorie", question:"Was sind fixe Kosten (Bereitschaftskosten)?", answer:"Kosten, die unabhängig von der produzierten Menge anfallen (z.B. Miete, Versicherungen). Sie entstehen durch die Bereitschaft zur Leistungserbringung."},
-    {id:15, category:"Kostentheorie", question:"Was ist der Deckungsbeitrag (DB)?", answer:"DB = Erlös − variable Kosten\n\nZeigt, wie viel ein Produkt zur Deckung der Fixkosten und zum Gewinn beiträgt. Bei DB > 0 lohnt sich kurzfristig die Produktion."},
+    {id:15, category:"Kostentheorie", question:"Was ist der Deckungsbeitrag (DB)?", answer:"DB = Erlös − variable Kosten. Zeigt, wie viel ein Produkt zur Deckung der Fixkosten und zum Gewinn beiträgt. Bei DB > 0 lohnt sich kurzfristig die Produktion."},
     {id:15, category:"Kostentheorie", question:"Was sind Grenzkosten?", answer:"Die zusätzlichen Kosten, die durch die Produktion einer weiteren Einheit entstehen (= ΔGesamtkosten ÷ ΔMenge)."},
 
     // === ID 16: Investition & Investitionsrechnung ===

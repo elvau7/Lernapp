@@ -698,7 +698,8 @@ function FlashcardsScreen({ course, th, progress, updateProgress, onBack, srMode
   };
   const renderCardText = (text, isAnswer) => {
     if (!text) return null;
-    const html = isAnswer ? text.replace(/\n/g, "<br>").replace(/^- /gm, "\u2022 ") : text;
+    const normalized = text.replace(/\\n/g, "\n");
+    const html = isAnswer ? normalized.replace(/\n/g, "<br>").replace(/^- /gm, "\u2022 ") : normalized;
     return /* @__PURE__ */ React.createElement("div", { style: { width: "100%", height: "100%" }, dangerouslySetInnerHTML: { __html: html } });
   };
   const srEmpty = srMode && queue.length === 0;

@@ -46,3 +46,9 @@ README.local.md
 # Project-local helper/generated areas not needed for deployment
 data/
 Unbrauchbar/
+Unbrauchbar/**
+unbrauchbar/
+unbrauchbar/**
+
+# Unused template/source leftovers
+Fächer/cards_VORLAGE_neues_fach.js

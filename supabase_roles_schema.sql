@@ -9,6 +9,10 @@ create table if not exists public.profiles (
 );
 
 alter table public.profiles enable row level security;
+revoke all on table public.profiles from public;
+revoke all on table public.profiles from anon;
+revoke all on table public.profiles from authenticated;
+grant select on table public.profiles to authenticated;
 
 create or replace function public.is_active_user(p_user_id uuid default auth.uid())
 returns boolean
@@ -113,7 +117,8 @@ returns table (
   status text,
   role text,
   requested_at timestamptz,
-  approved_at timestamptz
+  approved_at timestamptz,
+  last_sign_in_at timestamptz
 )
 language plpgsql
 security definer
@@ -125,8 +130,16 @@ begin
   end if;
 
   return query
-  select p.id, p.username, p.status, p.role, p.requested_at, p.approved_at
+  select
+    p.id,
+    p.username,
+    p.status,
+    p.role,
+    p.requested_at,
+    p.approved_at,
+    au.last_sign_in_at
   from public.profiles p
+  left join auth.users au on au.id = p.id
   order by p.requested_at desc nulls last;
 end;
 $$;
